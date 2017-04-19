@@ -230,6 +230,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SF.Data\SF.Data.csproj">
+      <Project>{9289d7f4-63f9-43e7-8e22-b66c54da261f}</Project>
+      <Name>SF.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SF.Model\SF.Model.csproj">
+      <Project>{d4311d55-14e5-42f2-946e-f148e56341d2}</Project>
+      <Name>SF.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
