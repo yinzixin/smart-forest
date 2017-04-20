@@ -8,11 +8,11 @@ using Dapper;
 
 namespace SF.Model
 {
-    class Tree
+    public class Tree
     {
         public long ID { get; set; }
         public string Number { get; set; }
-        public string UserID { get; set; }
+        public long  UserID { get; set; }
         public string Name { get; set; }
         public string NameLatin { get; set; }
         public string Photo { get; set; }
@@ -35,7 +35,7 @@ namespace SF.Model
         public decimal RootSize { get; set; }
         public decimal CrownNorthSouth { get; set; }
         public decimal CrownEastWest { get; set; }
-        public string CrownDeviated { get; set; }
+        public bool CrownDeviated { get; set; }
         public string CrownStatus { get; set; }
         public string BodySkin { get; set; }
         public string BodyHole { get; set; }
@@ -65,7 +65,7 @@ namespace SF.Model
         public string Inspector { get; set; }
         public string InspectTime { get; set; }
         public string Checker { get; set; }
-        public string CheckTime { get; set; }
+        public DateTime CheckTime { get; set; }
         public string Creator { get; set; }
         public string CreateTime { get; set; }
 

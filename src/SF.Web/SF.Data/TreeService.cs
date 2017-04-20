@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SF.Model;
 using Dapper;
 using DapperExtensions;
+using SF.Model;
 
 namespace SF.Data
 {
@@ -15,8 +16,17 @@ namespace SF.Data
         {
             using(var conn=Database.GetConn())
             {
-                long id=conn.Insert(model);
+                long id=conn.Insert(model);                
                 return id;
+            }
+        }
+
+        public static IEnumerable<Tree> Query(int userID)
+        {
+            using(var conn=Database.GetConn())
+            {
+                var res = conn.GetList<Tree>();
+                return res;
             }
         }
     }

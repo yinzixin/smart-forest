@@ -1,0 +1,13 @@
+C:\Code\SmartForest\src\SF.Web\SF.Data\obj\Debug\SF.Data.csprojResolveAssemblyReference.cache
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\SF.Data.dll.config
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\SF.Data.dll
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\SF.Data.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\Dapper.dll
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\DapperExtensions.dll
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\MySql.Data.dll
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\SF.Model.dll
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\SF.Model.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\Dapper.xml
+C:\Code\SmartForest\src\SF.Web\SF.Data\bin\Debug\DapperExtensions.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Data\obj\Debug\SF.Data.dll
+C:\Code\SmartForest\src\SF.Web\SF.Data\obj\Debug\SF.Data.pdb

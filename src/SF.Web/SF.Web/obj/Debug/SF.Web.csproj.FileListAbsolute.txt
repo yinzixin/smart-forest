@@ -53,3 +53,12 @@ C:\Code\SmartForest\src\SF.Web\SF.Web\bin\Microsoft.Owin.Security.MicrosoftAccou
 C:\Code\SmartForest\src\SF.Web\SF.Web\obj\Debug\SF.Web.csprojResolveAssemblyReference.cache
 C:\Code\SmartForest\src\SF.Web\SF.Web\obj\Debug\SF.Web.dll
 C:\Code\SmartForest\src\SF.Web\SF.Web\obj\Debug\SF.Web.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\SF.Data.dll
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\SF.Model.dll
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\MySql.Data.dll
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\DapperExtensions.dll
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\Dapper.dll
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\SF.Data.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\SF.Model.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\DapperExtensions.pdb
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\Dapper.xml
