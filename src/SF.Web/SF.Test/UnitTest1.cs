@@ -28,8 +28,8 @@ namespace SF.Test
                 ChestSize = 20,
                 UserID = 1,
                 Town = "xinan",
-                Latitude = 30.9022436475m,
-                Longtitude = 30.9022436475m,
+                Latitude = 30.1022436475m,
+                Longtitude = 118.0022436475m,
                 Photo = "test",
                 Height = 10m,
                 City = "wuxi",
@@ -39,7 +39,37 @@ namespace SF.Test
                 IsFamous = true,Dutier="abc",Health="ok", CrownDeviated=true
             };
 
+            Tree tree2 = new Tree
+            {
+                Address = "xxx街道",
+                AddressType = "城市",
+                YearOfBirth = 1900,
+                Name = "银杏2",
+                Checker = "yzx",
+                RootSize = 10,
+                BodyBug = "abc",
+                County = "jiangsu",
+                Creator = "lyy",
+                CheckTime = DateTime.Now,
+                ChestSize = 20,
+                UserID = 1,
+                Town = "xinan",
+                Latitude = 30.9622436475m,
+                Longtitude = 118.7022436475m,
+                Photo = "test",
+                Height = 10m,
+                City = "wuxi",
+                Story = "afasdfsa",
+                Number = "c1001",
+                NameLatin = "latin",
+                IsFamous = true,
+                Dutier = "abc",
+                Health = "ok",
+                CrownDeviated = true
+            };
+
             var id = TreeService.Create(tree);
+            TreeService.Create(tree2);
             Assert.IsTrue(id > 0);
 
         }

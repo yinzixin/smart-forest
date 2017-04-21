@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Map";
+}
+
+
+    <h2>Map</h2>
+
+    <div id="container" style="height:800px;width:1000px">
+
+    </div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hMM0UdyU2PGWSFthzv680NIvQiHbqBeo"></script>
+    <script>
+        
+        function initMap() {
+            var map = new BMap.Map("container");
+            var point = new BMap.Point(116.404, 39.715);
+            $.getJSON("/tree/mapdata", function (data) {
+                FillMap(map, data);
+            }); 
+        }
+
+        function FillMap(map, data) {
+
+            function addClickHandler(marker, content, opts) {
+                marker.addEventListener("mouseover", function (e) {
+                    openInfo(content, e, opts)
+                }
+            );
+            }
+
+            function openInfo(content, e, opts) {
+                var p = e.target;
+                var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                var infoWindow = new BMap.InfoWindow(content, opts);  // 创建信息窗口对象 
+                map.openInfoWindow(infoWindow, point); //开启信息窗口
+            }
+
+            var point = new BMap.Point(data.x, data.y);
+            var icon = new BMap.Icon("/Content/icon-tit.png", new BMap.Size(30, 30), {
+                offset: new BMap.Size(10, 25), // 指定定位位置               
+            });
+            icon.setImageSize(new BMap.Size(30, 30));
+            map.centerAndZoom(point, 12);
+            map.enableScrollWheelZoom(true);
+            for (var index in data.data) {
+                var tree = data.data[index];
+              
+                var marker = new BMap.Marker(new BMap.Point(tree.Longtitude, tree.Latitude), { icon: icon });
+                var content = "编号:" + tree.Number + "<br/>" + "拉丁名称:" + tree.NameLatin;
+                var opts = {
+                    width: 70,     // 信息窗口宽度
+                    height: 35,     // 信息窗口高度
+                    title: tree.Name, // 信息窗口标题
+                    enableMessage: true//设置允许信息窗发送短息
+                };
+                addClickHandler(marker, content,opts);
+
+                map.addOverlay(marker);                
+            }
+        }
+
+        $(initMap);
+   
+
+</script>

@@ -12,6 +12,10 @@ namespace SF.Data
 {
     public static class TreeService
     {
+        static TreeService()
+        {
+            DapperExtensions.DapperExtensions.SqlDialect = new DapperExtensions.Sql.MySqlDialect();
+        }
         public static long Create(Tree model)
         {
             using(var conn=Database.GetConn())
