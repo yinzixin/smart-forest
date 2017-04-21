@@ -1,0 +1,85 @@
+.tab-container{
+  position: relative;
+  .tab-navs{
+    width: 104px;
+    position: fixed;
+    cursor: pointer;
+    a{
+      display: inherit;
+      color:#333333;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 12px;
+      &.active{
+        background: rgba(235, 238, 245, 1);
+      }
+    }
+  }
+  .tab-contents{
+    margin-left: 120px;
+    border-left: 1px solid #e0e0e0;
+    padding-left: 36px;
+    .contents-title{
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 12px;
+      color:#3366FF;
+      margin-bottom: 20px;
+    }
+    .field-line{
+     margin-bottom: 15px;
+      .line-left{
+        width: 120px;
+        font-size: 12px;
+        color:#333;
+        text-align: right;
+        display: inline-block;
+         i{
+           color:red;
+         }
+
+      }
+      .line-right{
+        font-size: 12px;
+        height: 35px;
+        width: 300px;
+        line-height: 35px;
+        margin-left: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding-left: 5px;
+      }
+      .small-text{
+        font-size: 12px;
+        height: 35px;
+        width: 100px;
+        line-height: 35px;
+        margin-left: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding-left: 5px;
+      }
+      .box-size{
+        display: inline-block;
+        font-size: 12px;
+        color: #333;
+        position: relative;
+        left: -41px;
+        width: 30px;
+        text-align: right;
+      }
+      .radio-style{
+        margin: 0px 16px;
+        width: 100px;
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+    .page-xian{
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link href="css/common.css" rel="stylesheet"/>
+    <link href="css/page_list.css" rel="stylesheet"/>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/uniform/css/uniform.default.min.css" rel="stylesheet">
+    <link href="vendor/global/css/plugins.min.css" rel="stylesheet">
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/uniform/jquery.uniform.js"></script>
+    <script src="vendor/datatables/datatables.min.js"></script>
+    <script src="vendor/datatables/plugins/bootstrap/datatables.bootstrap.js"></script>
+</head>
+<body>
+<div class="page-common">
+    <div class="page-head">
+        <div class="head-icon"><img src="images/bg1.png"></div>
+        <h3 class="head-title">智慧林业</h3>
+
+        <div class="head-name">DMPDMP<img src="images/sign-out.png">
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="page-content ">
+        <div class="content-sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active">
+                    <a href="">
+                        <img src="images/icon-list.png">
+                        <h6>古树</h6>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="">
+                        <img src="images/icon-list2.png">
+                        <h6>用户</h6>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content-right">
+            <div class="content-box">
+                <!--content-->
+                <div class="box-title">
+                    <ul class="box-nav">
+                        <li><a href=""><img src="images/icon-tit.png">古树管理</a></li>
+                        <li class="nav-item"><a href="">名木古树</a></li>
+                    </ul>
+                </div>
+                <div class="box-tab tab-container">
+                     <ul class="tab-list">
+                         <li class="tab-header  active">名木古树</li>
+                         <li class="tab-header ">古树地图</li>
+                     </ul>
+                     <div class="tab-contents ">
+                        <!--tab1-->
+                        <div class="all-content active">
+                            <div class="list-wrapper">
+                                <!--label-->
+                                <div class="btn-group page-con-height">
+                                    <a class="btn  page-btn-color">
+                                        <span class="glyphicon glyphicon-plus page-icon-size"></span>
+                                        古树录入
+                                    </a>
+                                    <a class="btn filters page-btn-color mar-le15">
+                                        高级筛选
+                                    </a>
+                                    <a class="btn  page-btn-color mar-le15">
+                                        古树标注
+                                    </a>
+                                    <a class="btn  page-btn-color mar-le15">
+                                        删除
+                                    </a>
+                                    <div class=" page-btn-search mar-le15">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        <input type="text"  class=" input-search  " placeholder="请输入地理位置"/>
+                                    </div>
+                                    <div class=" page-btn-search mar-le15">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        <input type="text"  class=" input-search  " placeholder="请输入编号/名称搜索"/>
+                                    </div>
+                                    <div class="page-download ">
+                                        <a href="javascript:;" class="file">下载名片
+                                            <input type="file" name="file" id="" aria-required="true">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--end-->
+                                <!--filter-->
+                                <div class="page-filter">
+                                    <lable >
+                                        古树树龄（年）：
+                                        <input type="text" />
+                                        -
+                                        <input type="text">
+                                    </lable>
+                                    <lable class="mar-le15">
+                                        古树高度（M）：
+                                        <input type="text" />
+                                        -
+                                        <input type="text">
+                                    </lable>
+                                    <lable class="mar-le15">
+                                        古树胸围（CM）：
+                                        <input type="text" />
+                                        -
+                                        <input type="text">
+                                    </lable>
+                                    <lable class="mar-le15">
+                                        古树根围（CM）：
+                                        <input type="text" />
+                                        -
+                                        <input type="text">
+                                    </lable>
+                                    <span class="page-up">收起<img src="images/icon-up.png"></span>
+                                </div>
+                                <!--end-->
+                                <table class="table table-striped table-bordered  table-checkable order-column dataTable no-footer">
+                                    <tr role="row">
+                                        <th ><input type="checkbox" class="group-checkable"></th>
+                                        <th class="sorting"> 古树编号 </th>
+                                        <th class="sorting" > 古树名称 </th>
+                                        <th class="sorting" > 拉丁名 </th>
+                                        <th class="sorting" > 是否名木 </th>
+                                        <th class="sorting" > 是否在册 </th>
+                                        <th class="sorting" > 区域 </th>
+                                        <th class="sorting" > 古树类型 </th>
+                                        <th class="sorting" > 负责人 </th>
+                                        <th class="sorting" > 调查人 </th>
+                                        <th class="sorting" > 更新时间 </th>
+                                        <th class="sorting_desc"> 操作 </th>
+                                    </tr>
+                                    <tr class="gradeX odd" role="row">
+                                        <td><input type="checkbox" class="checkboxes" value="1"> </td>
+                                        <td class="center"> 1 </td>
+                                        <td class="center">杏树</td>
+                                        <td class="center">80</td>
+                                        <td class="center"> 否 </td>
+                                        <td class="center"> 是 </td>
+                                        <td class="center"> 滨湖区 </td>
+                                        <td class="center"> 银杏 </td>
+                                        <td class="center"> 张三 </td>
+                                        <td class="center"> 123 </td>
+                                        <td class="center"> 2017-01-10 18:08:35</td>
+                                        <td class="sorting_1">
+                                           <a title="编辑"><img src="images/icon-editor.png"/></a>
+                                           <a title="地图"><img src="images/icon-img.png" class="icon-img"/></a>
+                                           <a title="名片" class="card-hover">
+                                               <img src="images/icon-card.png" class="icon-card"/>
+                                               <div class="box-card">
+                                                   <img src="images/ewm.png"/>
+                                                   <div class="card-content">
+                                                       <p>编号：<span>01</span></p>
+                                                       <p>名称：<span>大将军</span></p>
+                                                       <p>拉丁名：<span>迎客松</span></p>
+                                                   </div>
+                                               </div>
+                                           </a>
+                                           <a  title="删除"><img src="images/icon-delete.png" class="icon-delete"/></a>
+                                        </td>
+                                    </tr>
+                                    <tr class="gradeX odd" role="row">
+                                        <td><input type="checkbox" class="checkboxes" value="1"> </td>
+                                        <td class="center"> 1 </td>
+                                        <td class="center">杏树</td>
+                                        <td class="center">80</td>
+                                        <td class="center"> 否 </td>
+                                        <td class="center"> 是 </td>
+                                        <td class="center"> 滨湖区 </td>
+                                        <td class="center"> 银杏 </td>
+                                        <td class="center"> 张三 </td>
+                                        <td class="center"> 123 </td>
+                                        <td class="center"> 2017-01-10 18:08:35</td>
+                                        <td class="sorting_1">
+                                            <a title="编辑"><img src="images/icon-editor.png"/></a>
+                                            <a title="地图"><img src="images/icon-img.png" class="icon-img"/></a>
+                                            <a title="名片" class="card-hover">
+                                                <img src="images/icon-card.png" class="icon-card"/>
+                                                <div class="box-card">
+                                                    <img src="images/ewm.png"/>
+                                                    <div class="card-content">
+                                                        <p>编号：<span>02</span></p>
+                                                        <p>名称：<span>大将军</span></p>
+                                                        <p>拉丁名：<span>迎客松</span></p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a  title="删除"><img src="images/icon-delete.png" class="icon-delete"/></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!--分页-->
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        <li>
+                                            <a href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li>
+                                            <a href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                        <select  class="form-control input-sm input-xsmall input-inline">
+                                            <option value="100">20</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                            <option value="-1">所有</option>
+                                        </select>
+                                        跳至
+                                        <input type="text"/>
+                                        页
+                                </nav>
+                                <!--end-->
+                            </div>
+                        </div>
+                        <!--end-->
+                        <!--tab2-->
+                        <div class="all-content " >
+                            <div class="list-wrapper">
+                                <div class="btn-group page-con-height">
+                                    <div class=" page-btn-search mar-le15">
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        <input type="text"  class=" input-search  " placeholder="请输入编号/名称搜索"/>
+                                    </div>
+                                </div>
+                                <div class="page-map">
+                                    <!--bgmaps-->
+                                    <div class="maps"><img src="images/bg-map.png"></div>
+                                    <!--end-->
+                                    <!--float-->
+                                    <div class=" map-float">
+                                        <div class="float-brief">
+                                            <div class="top-title">
+                                                <span class="top-name">银杏（YF0101）</span>
+                                                <span class="icon-close"></span>
+                                            </div>
+                                            <div class="top-images">
+                                                <img src="images/icon-bl.png" class="img-left" />
+                                                <img src="images/ewm.png" class="img-right">
+                                            </div>
+                                        </div>
+                                        <div class="float-details">
+                                            <div class="detail-block">
+                                                <div class="page-li"><span class="icon-xl"></span>基本信息</div>
+                                                <div class="slist">
+                                                    <p>古树年龄：<span>80年</span></p>
+                                                    <p>古树高度：<span>50M</span></p>
+                                                    <p>古树胸围：<span>100CM</span></p>
+                                                    <p>古树根围：<span>200CM</span></p>
+                                                    <p>生长状态：<span>良好</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="detail-block">
+                                                <div class="page-li"><span class="icon-xl"></span>地理位置</div>
+                                                <div class="slist">
+                                                    <p>地理位置：<span>江苏省/无锡市/滨湖区/阳谷街道</span></p>
+                                                    <p>经度 ：<span>180</span></p>
+                                                    <p>纬度 ：<span>90</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end-->
+                                </div>
+
+                                <!--end-->
+                                <!--end-->
+                            </div>
+                        </div>
+                        <!--end-->
+                    </div>
+                 </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script src="js/page_list.js"></script>
+</body>
+</html>
