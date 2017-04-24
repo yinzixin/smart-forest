@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link href="css/common.css" rel="stylesheet"/>
+    <link href="css/page_editor.css" rel="stylesheet"/>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/uniform/css/uniform.default.min.css" rel="stylesheet">
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/uniform/jquery.uniform.js"></script>
+</head>
+<body>
+<div class="page-common">
+    <div class="page-head">
+        <div class="head-icon"><img src="images/bg1.png"></div>
+        <h3 class="head-title">智慧林业</h3>
+
+        <div class="head-name">DMPDMP<img src="images/sign-out.png">
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="page-content ">
+        <div class="content-sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active">
+                    <a href="">
+                        <img src="images/icon-list.png">
+                        <h6>古树</h6>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="">
+                        <img src="images/icon-list2.png">
+                        <h6>用户</h6>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content-right">
+            <div class="content-box">
+                <!--content-->
+                <div class="box-title">
+                    <ul class="box-nav">
+                        <li><a href=""><img src="images/icon-tit.png">古树管理</a></li>
+                        <li class="nav-item"><a href="">古树录入</a></li>
+                    </ul>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+@RenderSection("scripts", required: false)
+<script src="js/editor.js"></script>
+</html>
