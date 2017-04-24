@@ -1,3 +1,6 @@
+.tab-header a {
+  color: #595959!important;
+}
 .content-box .page-btn-select select {
   border: 1px  solid #439c97;
   padding: 0px 8px;
@@ -33,7 +36,7 @@
   border-bottom: 3px solid #439c97;
 }
 .all-content {
-  display: none;
+  /*  display: none;*/
   clear: both;
 }
 .all-content.active {
