@@ -132,13 +132,14 @@
   margin-top: 60px;
 }
 .tab-container .tab-contents .field-btn .btn-save {
-  width: 100px;
+  width: 90px;
   height: 40px;
   color: #fff;
   background: #256c6d;
   margin-right: 10px;
 }
 .tab-container .tab-contents .field-btn .btn-cancel {
+  width: 90px;
   font-size: 12px;
   height: 40px;
   color: #fff;
