@@ -23,8 +23,7 @@ namespace SF.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-           bundles.Add(new StyleBundle("~/css").Include(
-                      "~/css/*.css","~/vendor/bootstrap/css/bootstrap.min.css","~/vendor/uniform/css/uniform.default.min.css"));
+        
                      
 
             bundles.Add(new ScriptBundle("~/vendor/all").Include("~/vendor/*.js", "~/vendor/bootstrap/js/bootstrap.min.js",

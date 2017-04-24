@@ -1435,6 +1435,8 @@
     <Content Include="vendor\uniform\css\uniform.default.scss" />
     <Content Include="vendor\uniform\README.md" />
     <Content Include="Views\Tree\Create.cshtml" />
+    <Content Include="Views\Tree\Index.cshtml" />
+    <Content Include="Views\Tree\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

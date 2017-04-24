@@ -25,6 +25,15 @@ namespace SF.Data
             }
         }
 
+        public static Tree Get(long id)
+        {
+            using(var conn=Database.GetConn())
+            {
+               var res=conn.Get<Tree>(id);
+               return res;
+            }
+        }
+
         public static IEnumerable<Tree> Query(int userID)
         {
             using(var conn=Database.GetConn())

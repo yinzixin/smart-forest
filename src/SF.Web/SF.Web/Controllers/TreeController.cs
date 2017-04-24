@@ -15,7 +15,20 @@ namespace SF.Web.Controllers
         {
             return View();
         }
-        // GET: Tree
+
+        public ActionResult Index()
+        {
+            var models = TreeService.Query(1);
+
+            return View(models);
+        }
+
+        public ActionResult Edit(long id)
+        {
+            var model = TreeService.Get(id);
+            return View(model);
+        }
+         
         public ActionResult Map()
         {
             return View();
