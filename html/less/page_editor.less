@@ -36,30 +36,79 @@
         color:#333;
         text-align: right;
         display: inline-block;
+        vertical-align: middle;
          i{
            color:red;
          }
 
       }
       .line-right{
-        font-size: 12px;
-        height: 35px;
-        width: 300px;
-        line-height: 35px;
         margin-left: 20px;
-        border: 1px solid #e0e0e0;
-        border-radius: 3px;
-        padding-left: 5px;
-      }
-      .small-text{
-        font-size: 12px;
-        height: 35px;
-        width: 100px;
-        line-height: 35px;
-        margin-left: 20px;
-        border: 1px solid #e0e0e0;
-        border-radius: 3px;
-        padding-left: 5px;
+        display: inline-block;
+        vertical-align: middle;
+        .input-long{
+          font-size: 12px;
+          height: 35px;
+          width: 300px;
+          line-height: 35px;
+          border-radius: 3px;
+          padding-left: 5px;
+          border: 1px solid #e0e0e0;
+        }
+        .small-text{
+          font-size: 12px;
+          height: 35px;
+          width: 100px;
+          line-height: 35px;
+          border: 1px solid #e0e0e0;
+          border-radius: 3px;
+          padding-left: 5px;
+        }
+        .a-upload{
+          height: 120px;
+          width: 300px;
+          line-height: 120px;
+          position: relative;
+          cursor: pointer;
+          color: #888;
+          background: #fafafa;
+          border: 1px dashed #ddd;
+          border-radius: 4px;
+          overflow: hidden;
+          margin-right: 10px;
+          text-align: center;
+          display: inline-block;
+          *display: inline;
+          *zoom: 1;
+          input{
+        position: absolute;
+          font-size: 100px;
+          right: 0;
+          top: 0;
+          opacity: 0;
+          filter: alpha(opacity=0);
+          cursor: pointer
+        }
+        }
+        .line-desc{
+          display: inline-block;
+          vertical-align: bottom;
+          p{
+            font-size: 12px;
+            color:#999999;
+            margin-bottom: 5px;
+
+          }
+        }
+        textarea{
+          resize: none;
+          width: 300px;
+          height: 100px;
+          max-width: 300px;
+          max-height: 100px;
+          padding: 10px;
+          border:1px solid rgba(228, 228, 228, 1);
+        }
       }
       .box-size{
         display: inline-block;
@@ -71,10 +120,27 @@
         text-align: right;
       }
       .radio-style{
-        margin: 0px 16px;
+        margin-right: 20px;
         width: 100px;
         font-size: 12px;
         font-weight: 400;
+      }
+    }
+    .field-btn{
+      width: 500px;
+     text-align: center;
+      margin-top: 60px;
+      .btn-save{
+        width: 100px;
+        height: 40px;
+        color:#fff;
+        background: rgb(37, 108, 109);
+        margin-right: 10px;
+      }
+      .btn-cancel{
+        font-size: 12px;
+        height: 40px;
+        color:#fff;
       }
     }
     .page-xian{

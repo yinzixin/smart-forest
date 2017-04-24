@@ -49,121 +49,591 @@
                 </div>
                 <div class="tab-container">
                     <div class="tab-navs">
-                          <a class="active">基本信息</a>
-                          <a>地理位置</a>
-                          <a>树体&冠径情况</a>
-                          <a>植物志资料</a>
-                          <a>其他调查情况</a>
-                          <a>负责&调查人员</a>
+                        <a class="active" href="#info_0">基本信息</a>
+                        <a  href="#info_1">地理位置</a>
+                        <a href="#info_2">树体&冠径情况</a>
+                        <a href="#info_3">植物志资料</a>
+                        <a href="#info_4">其他调查情况</a>
+                        <a href="#info_5">负责&调查人员</a>
                     </div>
                     <div class="tab-contents">
-                       <p class="contents-title">基本信息</p>
-                       <div class="field-line">
-                           <span class="line-left">古树编号<i class="">*</i></span>
-                           <input type="text" class="line-right" />
-                       </div>
-                       <div class="field-line">
-                            <span class="line-left">古树名称<i class="">*</i></span>
-                            <input type="text" class="line-right" />
-                        </div>
-                       <div class="field-line">
+                        <p class="contents-title" id="info_0">基本信息</p>
+
+                        <div class="field-line">
                             <span class="line-left">古树编号<i class="">*</i></span>
-                            <input type="text" class="line-right" />
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">古树名称<i class="">*</i></span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">古树编号<i class="">*</i></span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
                         </div>
                         <div class="field-line">
                             <span class="line-left">古树树龄<i class="">*</i></span>
-                            <input type="text" class="small-text " />
-                            <span class="box-size">年</span>
+
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">年</span>
+                            </div>
                         </div>
                         <div class="field-line">
                             <span class="line-left">古树高度<i class="">*</i></span>
-                            <input type="text" class="small-text " />
-                            <span class="box-size">M</span>
+
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">M</span>
+                            </div>
                         </div>
                         <div class="field-line">
-                        <span class="line-left">胸围<i class="">*</i></span>
-                        <input type="text" class="small-text " />
-                        <span class="box-size">CM</span>
-                    </div>
-                    <div class="field-line">
-                            <span class="line-left">根围<i class="">*</i></span>
-                            <input type="text" class="small-text " />
-                            <span class="box-size">CM</span>
-                        </div>
-                    <div class="field-line page-xian">
-                         <span class="line-left">生长状况<i class="">*</i></span>
-                         <label class="radio-style">
-                            <input type="radio"  class="radios" name="radios"/>
-                             良好
-                         </label>
-                         <label class="radio-style">
-                             <input type="radio"  class="radios" name="radios"/>
-                             一般
-                         </label>
-                        <label class="radio-style">
-                            <input type="radio"  class="radios" name="radios"/>
-                            濒死
-                        </label>
-                        </div>
-                    <div class="field-line">
-                            <span class="line-left">地理位置<i class="">*</i></span>
-                            <input type="text" class="line-right" />
-                        </div>
-                    <div class="field-line">
-                            <span class="line-left">经度<i class="">*</i></span>
-                            <input type="text" class="line-right" />
-                        </div>
-                    <div class="field-line">
-                            <span class="line-left">纬度<i class="">*</i></span>
-                            <input type="text" class="line-right" />
-                        </div>
-                    <div class="field-line">
-                            <span class="line-left">地点类别</span>
-                            <input type="text" class="line-right" />
-                        </div>
-                    <div class="field-line page-xian">
-                            <span class="line-left">生长状况</span>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                野外
-                            </label>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                农村
-                            </label>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                城镇
-                            </label>
-                            <label class="radio-style">
-                                  <input type="radio"  class="radios" name="radios"/>
-                                  城市
-                        </label>
-                        </div>
-                    <div class="field-line ">
-                            <span class="line-left">是否在册</span>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                是
-                            </label>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                否
-                            </label>
-                        </div>
-                    <div class="field-line ">
-                            <span class="line-left">是否名木</span>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                是
-                            </label>
-                            <label class="radio-style">
-                                <input type="radio"  class="radios" name="radios"/>
-                                否
-                            </label>
-                        </div>
-                </div>
+                            <span class="line-left">胸围<i class="">*</i></span>
 
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">CM</span>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">根围<i class="">*</i></span>
+
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">CM</span>
+                            </div>
+                        </div>
+                        <div class="field-line page-xian">
+                            <span class="line-left">生长状况<i class="">*</i></span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    良好
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    一般
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    濒死
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line" id="info_1">
+                            <span class="line-left">地理位置<i class="">*</i></span>
+
+                            <div class="line-right">
+                                <input type="text" class="input-long"/>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">经度<i class="">*</i></span>
+
+                            <div class="line-right">
+                                <input type="text" class="input-long"/>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">纬度<i class="">*</i></span>
+
+                            <div class="line-right">
+                                <input type="text" class="input-long"/>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">地点类别</span>
+
+                            <div class="line-right">
+                                <input type="text" class="input-long"/>
+                            </div>
+                        </div>
+                        <div class="field-line page-xian">
+                            <span class="line-left">生长状况</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    野外
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    农村
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    城镇
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    城市
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line " id="info_2">
+                            <span class="line-left">是否在册</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    是
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">是否名木</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    是
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">古树图片</span>
+
+                            <div class="line-right">
+                                <label class="a-upload">+<input type="file"/></label>
+
+                                <div class="line-desc">
+                                    <p>图片尺寸：高xxx 宽xxx</p>
+
+                                    <p>图片上传说明：支持jpg、bmp、png格式，单图片不超过2M</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">相关故事</span>
+
+                            <div class="line-right">
+                                <textarea></textarea>
+
+                                <div class="line-desc">
+                                    <p>不超过500个字</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">树皮</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    完整
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    残缺
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">树洞</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    少量
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    大量
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">枯枝</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    少量
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    大量
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">病虫危害程度</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    不严重
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    严重
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">应用价值</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">冠径南北</span>
+
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">M</span>
+                            </div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">冠径东西</span>
+
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">M</span>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">树冠完整度</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    圆整
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    基本圆整
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    残缺
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line  page-xian">
+                            <span class="line-left">偏冠</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    不明显
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    明显
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line page-xian" id="info_3">
+                            <span class="line-left">植物志资料</span>
+
+                            <div class="line-right">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div class="field-line " id="info_4">
+                            <span class="line-left">土质</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    好
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    中
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    差
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">排水</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    自然排水
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    人工排水
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">植被</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    人工
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    自然
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">积水</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    不积水
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    轻微积水
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    严重积水
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">雷击</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    是
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    否
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field-line ">
+                            <span class="line-left">20M范围内水体情况</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">铺装</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">地面标高</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">古树群</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">挡土墙</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">支撑</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">驳岸</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-line ">
+                            <span class="line-left">避雷设施</span>
+
+                            <div class="line-right">
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    有
+                                </label>
+                                <label class="radio-style">
+                                    <input type="radio" class="radios" name="radios"/>
+                                    无
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field-line">
+                            <span class="line-left">保护半径</span>
+
+                            <div class="line-right">
+                                <input type="text" class="small-text "/>
+                                <span class="box-size">M</span>
+                            </div>
+                        </div>
+
+                        <div class="field-line">
+                            <span class="line-left">根部</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">近5年古树及周边变化</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">最近建筑</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">影响树木生长活动</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">护栏半径</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+
+                        <div class="field-line page-xian">
+                            <span class="line-left">近5年古树及周边变化</span>
+
+                            <div class="line-right">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div class="field-line" id="info_5">
+                            <span class="line-left" >负责人</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">调查人</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">调查时间</span>
+
+                            <div class="line-right"><input type="date" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">复核人</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">调查时间</span>
+
+                            <div class="line-right"><input type="date" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">上传人</span>
+
+                            <div class="line-right"><input type="text" class="input-long"/></div>
+                        </div>
+                        <div class="field-line">
+                            <span class="line-left">调查时间</span>
+
+                            <div class="line-right"><input type="date" class="input-long"/></div>
+                        </div>
+                        <div class="field-btn">
+                            <button class="btn btn-save">保存</button>
+                            <button class="btn btn-cancel">取消</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
