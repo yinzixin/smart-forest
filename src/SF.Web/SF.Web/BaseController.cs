@@ -11,7 +11,7 @@ namespace SF.Web
     {
         public User GetUser()
         {
-            return new User { ID = 1, DefaultCity = "无锡" };
+            return new User { ID = 1, DefaultArea = "无锡" };
         }
     }
 }

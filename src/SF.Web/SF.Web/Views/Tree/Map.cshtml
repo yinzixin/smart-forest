@@ -2,13 +2,71 @@
 @{
     ViewBag.Title = "Map";
 }
+<link href="/css/page_list.css" rel="stylesheet" />
 
+   <div class="box-tab tab-container">
+    <ul class="tab-list">
+        <li class="tab-header  "><a href="/tree/index">名木古树</a></li>
+        <li class="tab-header active"><a href="">古树地图</a></li>
+    </ul>
+    <div class="tab-contents ">
+        <div class="all-content ">
+            <div class="list-wrapper">
+                <div class="btn-group page-con-height">
+                    <div class=" page-btn-search mar-le15">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        <input type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
+                    </div>
+                </div>
+                <div class="page-map">
+                    <!--bgmaps-->
+                    <div id="container" style="height:800px;width:100%">
 
-    <h2>Map</h2>
-
-    <div id="container" style="height:800px;width:1000px">
-
+                    </div>
+                    <!--end-->
+                    <!--float-->
+                    <div class=" map-float">
+                        <div class="float-brief">
+                            <div class="top-title">
+                                <span class="top-name">银杏（YF0101）</span>
+                                <span class="icon-close"></span>
+                            </div>
+                            <div class="top-images">
+                                <img src="/images/icon-bl.png" class="img-left" />
+                                <img src="/images/ewm.png" class="img-right">
+                            </div>
+                        </div>
+                        <div class="float-details">
+                            <div class="detail-block">
+                                <div class="page-li"><span class="icon-xl"></span>基本信息</div>
+                                <div class="slist">
+                                    <p>古树年龄：<span>80年</span></p>
+                                    <p>古树高度：<span>50M</span></p>
+                                    <p>古树胸围：<span>100CM</span></p>
+                                    <p>古树根围：<span>200CM</span></p>
+                                    <p>生长状态：<span>良好</span></p>
+                                </div>
+                            </div>
+                            <div class="detail-block">
+                                <div class="page-li"><span class="icon-xl"></span>地理位置</div>
+                                <div class="slist">
+                                    <p>地理位置：<span>江苏省/无锡市/滨湖区/阳谷街道</span></p>
+                                    <p>经度 ：<span>180</span></p>
+                                    <p>纬度 ：<span>90</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-->
+                </div>
+                <!--end-->
+                <!--end-->
+            </div>
+        </div>
     </div>
+</div>
+<script src="/js/page_list.js"></script>
+
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hMM0UdyU2PGWSFthzv680NIvQiHbqBeo"></script>
     <script>
         
