@@ -24,8 +24,6 @@ $(function(){
         var wh = $(window).height() - $('.field-btn').position().top + $('#info_5').position().top - $('.field-btn').height();
         $('.scroll-gap').height(Math.max(0, wh));
     }
-
-
     $(window).scroll(resetTabNav);
     $(window).resize(updateGap);
     updateGap();
