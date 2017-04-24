@@ -1,45 +1,61 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-
+    <meta charset="UTF-8">
+    <title>首页</title>
+    @Styles.Render("~/css")
+    @Scripts.Render("~/vendor/all")
+    @*<link href="css/common.css" rel="stylesheet" />
+    <link href="css/page_editor.css" rel="stylesheet" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/uniform/css/uniform.default.min.css" rel="stylesheet">
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/uniform/jquery.uniform.js"></script>*@
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="page-common">
+        <div class="page-head">
+            <div class="head-icon"><img src="/images/bg1.png"></div>
+            <h3 class="head-title">智慧林业</h3>
+            <div class="head-name">
+                DMPDMP<img src="/images/sign-out.png">
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        </div>
+        <div class="clear"></div>
+        <div class="page-content ">
+            <div class="content-sidebar">
+                <ul class="sidebar-menu">
+                    <li class="menu-item active">
+                        <a href="">
+                            <img src="/images/icon-list.png">
+                            <h6>古树</h6>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">
+                            <img src="/images/icon-list2.png">
+                            <h6>用户</h6>
+                        </a>
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+            </div>
+            <div class="content-right">
+                <div class="content-box">
+                    <!--content-->
+                    <div class="box-title">
+                        <ul class="box-nav">
+                            <li><a href=""><img src="/images/icon-tit.png">古树管理</a></li>
+                            <li class="nav-item"><a href="">古树录入</a></li>
+                        </ul>
+                    </div>
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-
     @RenderSection("scripts", required: false)
+    <script src="/js/editor.js"></script>
 </body>
+
 </html>

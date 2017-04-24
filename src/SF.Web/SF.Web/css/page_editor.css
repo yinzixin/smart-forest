@@ -1,0 +1,150 @@
+.tab-container {
+  position: relative;
+}
+.tab-container .tab-navs {
+  width: 104px;
+  position: fixed;
+  cursor: pointer;
+}
+.tab-container .tab-navs a {
+  display: inherit;
+  color: #333333;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 12px;
+}
+.tab-container .tab-navs a.active {
+  background: #ebeef5;
+}
+.tab-container .tab-contents {
+  margin-left: 120px;
+  border-left: 1px solid #e0e0e0;
+  padding-left: 36px;
+}
+.tab-container .tab-contents .contents-title {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 12px;
+  color: #3366FF;
+  margin-bottom: 20px;
+}
+.tab-container .tab-contents .field-line {
+  margin-bottom: 15px;
+}
+.tab-container .tab-contents .field-line .line-left {
+  width: 120px;
+  font-size: 12px;
+  color: #333;
+  text-align: right;
+  display: inline-block;
+  vertical-align: middle;
+}
+.tab-container .tab-contents .field-line .line-left i {
+  color: red;
+}
+.tab-container .tab-contents .field-line .line-right {
+  margin-left: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.tab-container .tab-contents .field-line .line-right .input-long {
+  font-size: 12px;
+  height: 35px;
+  width: 300px;
+  line-height: 35px;
+  border-radius: 3px;
+  padding-left: 5px;
+  border: 1px solid #e0e0e0;
+}
+.tab-container .tab-contents .field-line .line-right .small-text {
+  font-size: 12px;
+  height: 35px;
+  width: 100px;
+  line-height: 35px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding-left: 5px;
+}
+.tab-container .tab-contents .field-line .line-right .a-upload {
+  height: 120px;
+  width: 300px;
+  line-height: 120px;
+  position: relative;
+  cursor: pointer;
+  color: #888;
+  background: #fafafa;
+  border: 1px dashed #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 10px;
+  text-align: center;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.tab-container .tab-contents .field-line .line-right .a-upload input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+.tab-container .tab-contents .field-line .line-right .line-desc {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.tab-container .tab-contents .field-line .line-right .line-desc p {
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 5px;
+}
+.tab-container .tab-contents .field-line .line-right textarea {
+  resize: none;
+  width: 300px;
+  height: 100px;
+  max-width: 300px;
+  max-height: 100px;
+  padding: 10px;
+  border: 1px solid #e4e4e4;
+}
+.tab-container .tab-contents .field-line .box-size {
+  display: inline-block;
+  font-size: 12px;
+  color: #333;
+  position: relative;
+  left: -41px;
+  width: 30px;
+  text-align: right;
+}
+.tab-container .tab-contents .field-line .radio-style {
+  margin-right: 20px;
+  width: 100px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.tab-container .tab-contents .field-btn {
+  width: 500px;
+  text-align: center;
+  margin-top: 60px;
+}
+.tab-container .tab-contents .field-btn .btn-save {
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  background: #256c6d;
+  margin-right: 10px;
+}
+.tab-container .tab-contents .field-btn .btn-cancel {
+  width: 90px;
+  font-size: 12px;
+  height: 40px;
+  color: #fff;
+}
+.tab-container .tab-contents .page-xian {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}

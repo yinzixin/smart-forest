@@ -1,0 +1,232 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Microsoft Yahei';
+}
+ul {
+  list-style: none;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+a:link,
+a:visited {
+  text-decoration: none !important;
+  outline: none!important;
+}
+a:hover {
+  text-decoration: none !important;
+  outline: none!important;
+}
+/*html, body {
+    position: relative;
+    background-color: #ffffff;
+}*/
+.page-common {
+  min-width: 1200px;
+  overflow: hidden;
+}
+.page-common .page-head {
+  background-color: #4d5b69;
+  position: relative;
+  height: 60px;
+  /*overflow: hidden;*/
+  /*z-index: 4;*/
+}
+.page-common .page-head .head-icon {
+  width: 60px;
+  height: 60px;
+  float: left;
+  text-align: center;
+  line-height: 60px;
+  background: rgba(27, 163, 156, 0.49803922);
+}
+.page-common .page-head .head-icon img {
+  width: 20px;
+  height: 20px;
+}
+.page-common .page-head .head-title {
+  float: left;
+  line-height: 24px;
+  color: #fff;
+  margin-left: 10px;
+}
+.page-common .page-head .head-name {
+  float: right;
+  color: #fff;
+  width: 118px;
+  height: 50px;
+  line-height: 59px;
+  font-size: 14px;
+  position: relative;
+}
+.page-common .page-head .head-name img {
+  width: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.page-common .page-content {
+  overflow: hidden;
+  position: relative;
+}
+.page-common .page-content .content-sidebar {
+  width: 60px;
+  position: absolute;
+  background-color: #4d5b69;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 3;
+}
+.page-common .page-content .content-sidebar .sidebar-menu .menu-item {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+.page-common .page-content .content-sidebar .sidebar-menu .menu-item.active {
+  background: rgba(27, 163, 156, 0.49803922);
+}
+.page-common .page-content .content-sidebar .sidebar-menu .menu-item img {
+  width: 25px;
+  height: 25px;
+  margin-top: 8px;
+}
+.page-common .page-content .content-sidebar .sidebar-menu .menu-item h6 {
+  color: #ffffff;
+  margin: 6px 0px;
+}
+.page-common .page-content .content-sidebar .sidebar-menu .menu-item:hover {
+  background: rgba(27, 163, 156, 0.49803922);
+}
+.page-common .page-content .content-right {
+  background-color: #fff;
+  min-height: 720px;
+  margin-left: 190px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  margin-left: 60px;
+}
+.page-common .page-content .content-right .content-box {
+  margin: 20px;
+}
+/*title*/
+.box-title .box-nav {
+  list-style: none;
+  height: 25px;
+}
+.box-title .box-nav li {
+  float: left;
+}
+.box-title .box-nav li.nav-item:before {
+  content: '>';
+  display: inline-block;
+  position: relative;
+  top: 0px;
+  height: 20px;
+  padding: 0 6px;
+  transform: scale(0.8, 1.8);
+  -webkit-transform: scale(0.8, 1.8);
+  color: #000;
+  font-size: 12px;
+}
+.box-title .box-nav li a {
+  font-size: 12px;
+  color: #595959;
+}
+.box-title .box-nav li a img {
+  display: inline-block;
+  width: 15px;
+  margin-right: 3px;
+}
+.clear {
+  clear: both;
+}
+/*btn*/
+.btn.focus,
+.btn:focus,
+.btn:hover {
+  color: #fff!important;
+}
+.page-btn-color {
+  background: #439c97;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 4px!important;
+  z-index: 99999;
+}
+.page-btn-color:hover {
+  background: #439c97;
+}
+.btn-fff {
+  color: #fff!important;
+}
+.page-btn-fff {
+  background: #fff;
+  border: 1px solid #439c97 !important;
+  border-radius: 4px!important;
+  /* &:hover{
+        background:rgba(254, 112, 35, 1);
+        color:#fff!important;
+    }*/
+}
+.page-gly {
+  padding-left: 35px;
+  color: #439c97;
+}
+.page-btn-select {
+  display: inherit;
+  position: relative;
+  z-index: 99999;
+}
+.page-btn-select .page-btn-ul {
+  position: absolute;
+  width: 130px;
+  border: 1px solid #439c97;
+  background: #fff;
+  z-index: 999;
+  right: 0;
+  border-radius: 4px!important;
+}
+.page-btn-select .page-btn-ul .page-btn-li {
+  text-align: center;
+  padding: 5px 0px;
+  color: #333;
+}
+.page-btn-select .page-btn-ul .page-btn-li a {
+  color: #333;
+}
+.page-btn-select .page-btn-ul .page-btn-li a:hover {
+  color: #fff;
+}
+.page-btn-select .page-btn-ul .page-btn-li:hover {
+  background: #439c97;
+  color: #fff;
+}
+/*dataTable*/
+.page-numeric {
+  background: none!important;
+}
+.mar-le15 {
+  margin-left: 15px!important;
+}
+.mar-le10 {
+  margin-left: 10px!important;
+}
+.calendar-time {
+  display: none;
+}
+.page-hidden {
+  visibility: hidden;
+}
+.page-mar {
+  margin-top: 19px;
+}
+.icon-data {
+  display: inline-block;
+  width: 14px;
+  margin-right: 3px;
+}

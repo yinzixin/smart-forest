@@ -10,6 +10,11 @@ namespace SF.Web.Controllers
 {
     public class TreeController :BaseController
     {
+
+        public ActionResult Create()
+        {
+            return View();
+        }
         // GET: Tree
         public ActionResult Map()
         {
