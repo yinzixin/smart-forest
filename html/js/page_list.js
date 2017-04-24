@@ -13,7 +13,7 @@ $(function(){
     $(".page-up").click(function(){
         $(".page-filter").hide();
     })
-    createTab($('.content-box'))
+   /* createTab($('.content-box'))*/
     $(".card-hover").hover(function(){
       $(this).find(".box-card").toggle();
     })
@@ -23,7 +23,8 @@ $(function(){
 })
 $("table input").uniform();
 //ÇÐ»»
-function createTab(dom) {
+
+/*function createTab(dom) {
 
     var containers = $('.tab-container', dom);
     $.each(containers, function (index, _container) {
@@ -59,4 +60,4 @@ function createTab(dom) {
         active(0);
 
     });
-}
+}*/

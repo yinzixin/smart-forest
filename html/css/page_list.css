@@ -1,3 +1,6 @@
+.tab-header a {
+  color: #595959!important;
+}
 .content-box .page-btn-select select {
   border: 1px  solid #439c97;
   padding: 0px 8px;
@@ -33,7 +36,7 @@
   border-bottom: 3px solid #439c97;
 }
 .all-content {
-  display: none;
+  /*  display: none;*/
   clear: both;
 }
 .all-content.active {
@@ -123,10 +126,11 @@
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
 }
-.page-filter lable {
+.page-filter label {
   font-size: 12px;
+  font-weight: 400;
 }
-.page-filter lable input {
+.page-filter label input {
   height: 30px;
   line-height: 30px;
   width: 60px;
