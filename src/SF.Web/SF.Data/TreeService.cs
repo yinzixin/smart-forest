@@ -20,11 +20,27 @@ namespace SF.Data
         {
             using(var conn=Database.GetConn())
             {
+                model.Longtitude = convertDegree(model.LonText);
+                model.Latitude = convertDegree(model.LatText);
+
                 long id=conn.Insert(model);                
                 return id;
             }
         }
 
+        static decimal convertDegree(string s)
+        {
+            decimal deg=0m;
+            try
+            {
+                deg = decimal.Parse(s);
+            }
+            catch (Exception)
+            {
+
+            }
+            return deg;
+        }
         public static Tree Get(long id)
         {
             using(var conn=Database.GetConn())

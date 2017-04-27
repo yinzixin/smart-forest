@@ -11,6 +11,21 @@ namespace SF.Web.Controllers
     public class TreeController :BaseController
     {
 
+        [HttpPost]
+        public ActionResult Create(Tree model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = GetUser();
+                model.UserID = user.ID;
+                TreeService.Create(model);
+                return RedirectToAction("Index");
+            }
+            else
+                return View(model);
+        }
+
+         [HttpGet]
         public ActionResult Create()
         {
             return View();

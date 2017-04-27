@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
-
-
+using System.ComponentModel.DataAnnotations;
+using DataAnnotationsExtensions;
+using DapperExtensions.Mapper;
+ 
 namespace SF.Model
 {
     public class Tree
@@ -16,7 +18,11 @@ namespace SF.Model
         public string Name { get; set; }
         public string NameLatin { get; set; }
         public string Photo { get; set; }
-        public int YearOfBirth { get; set; }
+        public int YearOfBirth
+        {
+            get;
+            set;
+        }
         public decimal Height { get; set; }
         public string Story { get; set; }
         public bool? IsFamous { get; set; }
@@ -31,11 +37,14 @@ namespace SF.Model
         public decimal Latitude { get; set; }
         public string Dutier { get; set; }
         public string Health { get; set; }
+
+
+        [Required(ErrorMessage="胸围是必须的")]        
         public decimal ChestSize { get; set; }
         public decimal RootSize { get; set; }
         public decimal CrownNorthSouth { get; set; }
         public decimal CrownEastWest { get; set; }
-        public bool CrownDeviated { get; set; }
+        public string CrownDeviated { get; set; }
         public string CrownStatus { get; set; }
         public string BodySkin { get; set; }
         public string BodyHole { get; set; }
@@ -69,5 +78,24 @@ namespace SF.Model
         public string Creator { get; set; }
         public string CreateTime { get; set; }
 
+
+        public string LonText { get; set; }
+
+        public string LatText { get; set; }
+
+        public int Age { get; set; }
+    }
+
+
+    public class TreeMapper : ClassMapper<Tree>
+    {
+        public TreeMapper()
+        {
+            Table("Tree");
+            Map(m => m.Age).Ignore();
+            Map(m => m.LatText).Ignore();
+            Map(m => m.LonText).Ignore();
+            AutoMap();
+        }
     }
 }

@@ -16,6 +16,15 @@ namespace SF.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //var clientDataTypeValidator = ModelValidatorProviders.Providers.OfType<ClientDataTypeModelValidatorProvider>().FirstOrDefault();
+            //if (null != clientDataTypeValidator)
+            //{
+            //    ModelValidatorProviders.Providers.Remove(clientDataTypeValidator);
+            //}
+            //ModelValidatorProviders.Providers.Add(new FilterableClientDataTypeModelValidatorProvider());
+
+            DefaultModelBinder.ResourceClassKey = "hint";
         }
     }
 }
