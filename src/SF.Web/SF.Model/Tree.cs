@@ -13,9 +13,14 @@ namespace SF.Model
     public class Tree
     {
         public long ID { get; set; }
+
+        [Required(ErrorMessage = "必填字段")]
         public string Number { get; set; }
-        public long  UserID { get; set; }
+        public long UserID { get; set; }
+
+        [Required(ErrorMessage = "必填字段")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "必填字段")]
         public string NameLatin { get; set; }
         public string Photo { get; set; }
         public int YearOfBirth
@@ -23,6 +28,7 @@ namespace SF.Model
             get;
             set;
         }
+        [Required(ErrorMessage = "必填字段")]
         public decimal Height { get; set; }
         public string Story { get; set; }
         public bool? IsFamous { get; set; }
@@ -39,7 +45,7 @@ namespace SF.Model
         public string Health { get; set; }
 
 
-        [Required(ErrorMessage="胸围是必须的")]        
+        [Required(ErrorMessage = "必填字段")]
         public decimal ChestSize { get; set; }
         public decimal RootSize { get; set; }
         public decimal CrownNorthSouth { get; set; }
@@ -62,7 +68,7 @@ namespace SF.Model
         public string OtherProtectRadient { get; set; }
         public string OtherPavement { get; set; }
         public string OtherHeightMarker { get; set; }
-        public bool? OtherThunder { get; set; }
+        public string OtherThunder { get; set; }
         public string OtherBuilding { get; set; }
         public string OtherActivity { get; set; }
         public string OtherFenceRadient { get; set; }
@@ -83,6 +89,7 @@ namespace SF.Model
 
         public string LatText { get; set; }
 
+        [Required(ErrorMessage = "必填字段")]
         public int Age { get; set; }
     }
 

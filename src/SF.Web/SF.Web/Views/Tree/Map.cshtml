@@ -25,10 +25,10 @@
                     </div>
                     <!--end-->
                     <!--float-->
-                    <div class=" map-float">
+                    <div class="map-float">
                         <div class="float-brief">
                             <div class="top-title">
-                                <span class="top-name">银杏（YF0101）</span>
+                                <span id="info-name" class="top-name">银杏（YF0101）</span>
                                 <span class="icon-close"></span>
                             </div>
                             <div class="top-images">
@@ -40,19 +40,19 @@
                             <div class="detail-block">
                                 <div class="page-li"><span class="icon-xl"></span>基本信息</div>
                                 <div class="slist">
-                                    <p>古树年龄：<span>80年</span></p>
-                                    <p>古树高度：<span>50M</span></p>
-                                    <p>古树胸围：<span>100CM</span></p>
-                                    <p>古树根围：<span>200CM</span></p>
-                                    <p>生长状态：<span>良好</span></p>
+                                    <p>古树年龄：<span id="info-age">80年</span></p>
+                                    <p>古树高度：<span id="info-height">50M</span></p>
+                                    <p>古树胸围：<span id="info-chestSize">100CM</span></p>
+                                    <p>古树根围：<span id="info-rootSize">200CM</span></p>
+                                    <p>生长状态：<span id="info-status">良好</span></p>
                                 </div>
                             </div>
                             <div class="detail-block">
                                 <div class="page-li"><span class="icon-xl"></span>地理位置</div>
                                 <div class="slist">
-                                    <p>地理位置：<span>江苏省/无锡市/滨湖区/阳谷街道</span></p>
-                                    <p>经度 ：<span>180</span></p>
-                                    <p>纬度 ：<span>90</span></p>
+                                    <p>地理位置：<span id="info-area">江苏省/无锡市/滨湖区/阳谷街道</span></p>
+                                    <p>经度 ：<span id="info-lat">180</span></p>
+                                    <p>纬度 ：<span id="info-lon">90</span></p>
                                 </div>
                             </div>
                         </div>
@@ -71,6 +71,8 @@
     <script>
         
         function initMap() {
+            $('.map-float').hide();
+
             var map = new BMap.Map("container");
             var point = new BMap.Point(116.404, 39.715);
             $.getJSON("/tree/mapdata", function (data) {
@@ -78,13 +80,30 @@
             }); 
         }
 
+        function fillInfoPanel(tree)
+        {
+            $('#info-name').html(tree.Name + '(' + tree.Number + ')');
+            $('#info-age').html(tree.Age);
+            $('#info-height').html(tree.Height);
+            $('#info-chestSize').html(tree.ChestSize);
+            $('#info-rootSize').html(tree.RootSize);
+            $('#info-status').html(tree.Health);
+            $('#info-lat').html(tree.Latitude);
+            $('#info-lon').html(tree.Longtitude);
+            $('.map-float').show();
+
+        }
+
         function FillMap(map, data) {
 
-            function addClickHandler(marker, content, opts) {
+            function addClickHandler(marker, content, opts,tree) {
                 marker.addEventListener("mouseover", function (e) {
                     openInfo(content, e, opts)
-                }
-            );
+                });
+
+                marker.addEventListener("click", function (e) {
+                    fillInfoPanel(tree);
+                });
             }
 
             function openInfo(content, e, opts) {
@@ -120,7 +139,7 @@
                         title: tree.Name, // 信息窗口标题
                         enableMessage: true//设置允许信息窗发送短息
                     };
-                    addClickHandler(marker, content, opts);
+                    addClickHandler(marker, content, opts,tree);
 
                     map.addOverlay(marker);
                 }

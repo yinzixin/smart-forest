@@ -31,18 +31,40 @@ namespace SF.Web.Controllers
             return View();
         }
 
+         private static Tree ConvertViewModel(  Tree model)
+         {
+             model.LonText = model.Longtitude.ToString();// = convertDegree(model.LonText);
+             model.LatText = model.Latitude.ToString();// = convertDegree(model.LatText);
+             model.Age = DateTime.Now.Year - model.YearOfBirth;// = DateTime.Now.Year - model.Age;
+             return model;
+         }
+
+        [HttpGet]
+        public ActionResult Edit(long id)
+         {
+
+             var model = TreeService.Get(id);
+             ConvertViewModel(  model);
+             return View(model);
+         }
+        [HttpPost]
+        public ActionResult Edit(Tree model)
+        {
+            if (ModelState.IsValid)
+            { 
+                TreeService.Update(model);
+                return RedirectToAction("Index");
+            }
+            else
+                return View(model);
+        }
         public ActionResult Index()
         {
             var models = TreeService.Query(1);
 
             return View(models);
         }
-
-        public ActionResult Edit(long id)
-        {
-            var model = TreeService.Get(id);
-            return View(model);
-        }
+ 
          
         public ActionResult Map()
         {
@@ -62,7 +84,7 @@ namespace SF.Web.Controllers
                       x = data.Average(t => t.Longtitude);
                       y = data.Average(t => t.Latitude);
                 }
-                dynamic result = new { x = x, y = y, data = data };
+                dynamic result = new { x = x, y = y, data = data.Select(d=>ConvertViewModel( d)) };
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
             else

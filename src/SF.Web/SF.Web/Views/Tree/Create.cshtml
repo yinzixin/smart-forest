@@ -1,6 +1,6 @@
 ﻿@model SF.Model.Tree
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "古树录入";
 }
 <link href="/css/page_editor.css" rel="stylesheet" />
 <div class="tab-container">
@@ -42,7 +42,7 @@
                 <span class="line-left">古树高度<i class="">*</i></span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.Height, new { @class = "small-text" })
-                    <span class="box-size">M</span>
+                    <span class="box-size">M</span> @Html.ValidationMessageFor(m => m.Height)
                 </div>
             </div>
             <div class="field-line">
@@ -314,11 +314,11 @@
                 <span class="line-left">排水</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                       @Html.RadioButtonFor(m => m.OtherDrain, "自然排水", new { @class = "radios" })
                         自然排水
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherDrain, "人工排水", new { @class = "radios" })
                         人工排水
                     </label>
                 </div>
@@ -327,11 +327,11 @@
                 <span class="line-left">植被</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherVegetation, "人工", new { @class = "radios" })
                         人工
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherVegetation, "自然", new { @class = "radios" })
                         自然
                     </label>
                 </div>
@@ -340,15 +340,15 @@
                 <span class="line-left">积水</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherSeeper, "不积水", new { @class = "radios" })
                         不积水
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherSeeper, "轻微积水", new { @class = "radios" })
                         轻微积水
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherSeeper, "严重积水", new { @class = "radios" })
                         严重积水
                     </label>
                 </div>
@@ -357,11 +357,11 @@
                 <span class="line-left">雷击</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherThunder, "是", new { @class = "radios" })
                         是
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherThunder, "否", new { @class = "radios" })
                         否
                     </label>
                 </div>
@@ -370,11 +370,11 @@
                 <span class="line-left">20M范围内水体情况</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherWater, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherWater, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
@@ -383,38 +383,40 @@
                 <span class="line-left">铺装</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherPavement, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherPavement, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
-            </div>
+                </div>
+            
             <div class="field-line ">
                 <span class="line-left">地面标高</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherHeightMarker, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherHeightMarker, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
-            </div>
+                </div>
+             
             <div class="field-line ">
                 <span class="line-left">古树群</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
-                        有
+                        @Html.RadioButtonFor(m => m.OtherIsGroup, "是", new { @class = "radios" })
+                        是
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
-                        无
+                        @Html.RadioButtonFor(m => m.OtherIsGroup, "否", new { @class = "radios" })
+                        否
                     </label>
                 </div>
             </div>
@@ -422,11 +424,11 @@
                 <span class="line-left">挡土墙</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherSoilProtector, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherSoilProtector, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
@@ -435,11 +437,11 @@
                 <span class="line-left">支撑</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherStrut, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherStrut, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
@@ -448,11 +450,11 @@
                 <span class="line-left">驳岸</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherBulkhead, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherBulkhead, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
@@ -461,11 +463,11 @@
                 <span class="line-left">避雷设施</span>
                 <div class="line-right">
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherThunderProtector, "有", new { @class = "radios" })
                         有
                     </label>
                     <label class="radio-style">
-                        <input type="radio" class="radios" name="radios" />
+                        @Html.RadioButtonFor(m => m.OtherThunderProtector, "无", new { @class = "radios" })
                         无
                     </label>
                 </div>
@@ -473,64 +475,65 @@
             <div class="field-line">
                 <span class="line-left">保护半径</span>
                 <div class="line-right">
-                    <input type="text" class="small-text " />
+                    @Html.TextBoxFor(m => m.OtherProtectRadient, new { @class="small-text"})
+                   
                     <span class="box-size">M</span>
                 </div>
             </div>
             <div class="field-line">
                 <span class="line-left">根部</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.OtherRoot, new { @class = "input-long" })</div>
             </div>
-            <div class="field-line">
+            @*<div class="field-line">
                 <span class="line-left">近5年古树及周边变化</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
-            </div>
+                <div class="line-right">@Html.TextBoxFor(m => m.OtherChanges, new { @class = "input-long" })</div>
+            </div>*@
             <div class="field-line">
                 <span class="line-left">最近建筑</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.OtherBuilding, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
                 <span class="line-left">影响树木生长活动</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.OtherActivity, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
                 <span class="line-left">护栏半径</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.OtherFenceRadient, new { @class = "input-long" })</div>
             </div>
             <div class="field-line ">
                 <span class="line-left">近5年古树及周边变化</span>
                 <div class="line-right">
-                    <textarea></textarea>
+                   @Html.TextAreaFor(m=>m.OtherChanges)
                 </div>
             </div>
             <p class="contents-title" id="info_5">负责&调查人员</p>
             <div class="field-line">
                 <span class="line-left">负责人</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.Dutier, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
                 <span class="line-left">调查人</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.Inspector, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
                 <span class="line-left">调查时间</span>
-                <div class="line-right"><input type="date" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.InspectTime, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
                 <span class="line-left">复核人</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.Checker, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
-                <span class="line-left">调查时间</span>
-                <div class="line-right"><input type="date" class="input-long" /></div>
+                <span class="line-left">复核时间</span>
+                <div class="line-right">@Html.TextBoxFor(m => m.CheckTime, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
                 <span class="line-left">上传人</span>
-                <div class="line-right"><input type="text" class="input-long" /></div>
+                <div class="line-right">@Html.TextBoxFor(m => m.Creator, new { @class = "input-long" })</div>
             </div>
             <div class="field-line">
-                <span class="line-left">调查时间</span>
-                <div class="line-right"><input type="date" class="input-long" /></div>
+                <span class="line-left">上传时间</span>
+                <div class="line-right">@Html.TextBoxFor(m => m.CreateTime, new { @class = "input-long" })</div>
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>
@@ -538,6 +541,6 @@
             </div>
             @Html.ValidationSummary()
             <div style="height: 200px;"></div>
-        </div>
+         </div>
     }
 </div>
