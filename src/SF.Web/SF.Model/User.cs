@@ -22,6 +22,10 @@ namespace SF.Model
 
         public string CompanyName { get; set; }
 
+        public int ParentUser { get; set; }
+
+        public int Level { get; set; }
+
         public bool IsPause { get; set; }
     }
 }

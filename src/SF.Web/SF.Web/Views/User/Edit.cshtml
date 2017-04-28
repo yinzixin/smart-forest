@@ -1,17 +1,18 @@
 ﻿@model SF.Model.User
 @{
-    ViewBag.Title = "新建用户";
+    ViewBag.Title = "编辑用户";
 }
 <link href="/css/page_editor.css" rel="stylesheet" />
 <link href="/css/new_user.css" rel="stylesheet" />
 
 <div class="tab-container">
     <div class="tab-navs">
-        <a class="active">新建用户</a>
+        <a class="active">编辑用户</a>
         <a>修改密码</a>
     </div>
     @using (Html.BeginForm())
     {
+        @Html.HiddenFor(m=>m.ID)
         <div class="tab-contents">
             <p class="contents-title">用户信息</p>
             <div class="field-line">

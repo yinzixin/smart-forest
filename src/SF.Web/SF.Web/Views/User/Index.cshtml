@@ -1,10 +1,15 @@
-﻿
+﻿@model List<SF.Model.User>
 @{
     ViewBag.Title = "用户管理";
 }
 <link href="/css/page_list.css" rel="stylesheet" />
 <link href="/css/user_manage.css" rel="stylesheet" />
-
+<div class="box-title">
+    <ul class="box-nav">
+        <li><a href=""><img src="/images/icon-tit.png">用户管理</a></li>
+        <li class="nav-item"><a href="">用户列表</a></li>
+    </ul>
+</div>
 <div class="box-tab tab-container">
     <div class="tab-contents ">
         <!--tab1-->
@@ -12,17 +17,14 @@
             <div class="list-wrapper">
                 <!--label-->
                 <div class="btn-group page-con-height">
-                    <a class="btn  page-btn-color">
+                    <a class="btn  page-btn-color" href="/user/create">
                         <span class="glyphicon glyphicon-plus page-icon-size"></span>
                         新建用户
                     </a>
                     <a class="btn  page-btn-color mar-le15">
                         删除
                     </a>
-                    @*<div class=" page-btn-search mar-le15">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        <input type="text" class=" input-search  " placeholder="请输入地理位置" />
-                    </div>*@
+ 
                     <div class=" page-btn-search mar-le15" style="float:right">
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                         <input type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
@@ -36,44 +38,33 @@
                         <th class="sorting"> 用户名称</th>
                         <th class="sorting"> 状态 </th>
                         <th class="sorting"> 姓名 </th>
-                        <th class="sorting"> 联系方式 </th>
+                        <th class="sorting"> 用户级别 </th>
                         <th class="sorting"> 负责区域 </th>
                         <th class="sorting"> 单位 </th>
                         <th class="sorting"> 标题 </th>
                         <th class="sorting"> 操作 </th>
                     </tr>
+                    @foreach(var u in Model)
+                    { 
                     <tr class="gradeX odd" role="row">
                         <td><input type="checkbox" class="checkboxes" value="1"> </td>
-                        <td class="center"> 1 </td>
-                        <td class="center">zhang</td>
-                        <td class="center"><img src="images/icon-disable.png" class="icon-disable" />启用</td>
-                        <td class="center"> 张三 </td>
-                        <td class="center"> 12345678900 </td>
-                        <td class="center"> 无锡市 </td>
-                        <td class="center"> 林业 </td>
-                        <td class="center"> 林业 </td>
+                        <td class="center"> @u.ID </td>
+                        <td class="center">@u.UserName</td>
+                        <td class="center"><img src='@(u.IsPause?"/images/icon-enable.png":"/images/icon-disable.png")' class="icon-disable" />启用</td>   
+                        <td class="center"> @u.RealName </td>
+                        
+                        <td class="center"> @(u.Level==1?"区县级":"市级") </td>
+                        <td class="center"> @u.DefaultArea </td>
+                        <td class="center"> @u.CompanyName </td>
+                        <td class="center"> @u.Title </td>
                         <td class="sorting_1">
-                            <a title="编辑"><img src="/images/icon-editor.png" /></a>
+                            <a href="/user/edit/@u.ID" title="编辑"><img src="/images/icon-editor.png" /></a>
                             <a title=""><img src="/images/icon-lock.png" class="icon-lock" /></a>
                             <a title="删除"><img src="/images/icon-delete.png" class="icon-delete" /></a>
                         </td>
                     </tr>
-                    <tr class="gradeX odd" role="row">
-                        <td><input type="checkbox" class="checkboxes" value="1"> </td>
-                        <td class="center"> 1 </td>
-                        <td class="center">zhang</td>
-                        <td class="center"><img src="images/icon-enable.png" class="icon-disable" />启用</td>
-                        <td class="center"> 张三 </td>
-                        <td class="center"> 12345678900 </td>
-                        <td class="center"> 无锡市 </td>
-                        <td class="center"> 林业 </td>
-                        <td class="center"> 林业 </td>
-                        <td class="sorting_1">
-                            <a title="编辑"><img src="images/icon-editor.png" /></a>
-                            <a title=""><img src="images/icon-lock.png" class="icon-lock" /></a>
-                            <a title="删除"><img src="images/icon-delete.png" class="icon-delete" /></a>
-                        </td>
-                    </tr>
+                    }
+ 
                 </table>
                 <!--分页-->
                 <nav aria-label="Page navigation">
