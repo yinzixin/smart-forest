@@ -11,7 +11,13 @@ namespace SF.Web
     {
         public User GetUser()
         {
-            return new User { ID = 1, DefaultArea = "无锡" };
+            return (User)Session["current_user"];
+           // return new User { ID = 1, DefaultArea = "无锡" };
+        }
+
+        public void SetCurrentUser(User user)
+        {
+            Session["current_user"] = user;
         }
     }
 }

@@ -1,9 +1,36 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Login";
+    Layout = null;
 }
-
-@Layout=null;
-
-<h2>Login</h2>
+@model SF.Web.Controllers.LoginModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="/css/common.css" rel="stylesheet" />
+    <link href="/css/page_login.css" rel="stylesheet" />
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/vendor/jquery.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="bg-login">
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="login-content">
+            <p class="content-title">用户登陆</p>
+            <div class="login-user">
+              @Html.TextBoxFor(m=>m.User)
+            </div>
+            <div class="login-password">
+                @Html.PasswordFor(m=>m.Password)
+            </div>
+            @Html.ValidationSummary()
+            <button class="btn btn-size">登陆</button>
+        </div>
+    }
+</body>
+</html>
 

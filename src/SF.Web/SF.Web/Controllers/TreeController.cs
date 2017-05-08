@@ -58,11 +58,52 @@ namespace SF.Web.Controllers
             else
                 return View(model);
         }
-        public ActionResult Index()
+        public ActionResult Index(Models.TreeQueryModel q)
         {
-            var models = TreeService.Query(1);
+            var user = GetUser();
+            if (user != null)
+            {
+                var models = TreeService.Query(user.ID).ToList();
+                var result = DoQuery(q, models);
+                ViewBag.q = q;
+                int pageSize = 2;
+                int count = result.Count() % pageSize == 0 ? result.Count() / pageSize : result.Count() / pageSize + 1;
+                int pageStart = q.Current - pageSize < 1 ? 1 : q.Current - pageSize;
+                int pageEnd = q.Current + 2 > count ? count : q.Current + 2;
 
-            return View(models);
+                List<int> pages = new List<int>();
+                for (int i = pageStart; i <= pageEnd;i++ )
+                {
+                    pages.Add(i);
+                }
+                ViewBag.page = pages;
+
+                result = result.Skip(q.Current * pageSize - pageSize).Take(pageSize).ToList();
+                return View(result);
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
+        }
+
+        IEnumerable<Tree> DoQuery(Models.TreeQueryModel q, IEnumerable<Tree> source)
+        {
+            IEnumerable<Tree> r = source;
+            if (!string.IsNullOrEmpty(q.Area))
+                r = r.Where(s => s.County.Contains(q.Area) || s.City.Contains(q.Area) || s.Address.Contains(q.Area));
+
+
+            if (!string.IsNullOrEmpty(q.IDName))
+                r = r.Where(s => s.Number.Contains(q.IDName) || s.Name.Contains(q.IDName));
+
+            if (q.Age_Start.HasValue)
+                r = r.Where(s => s.Age >= q.Age_Start);
+
+            if (q.Age_End.HasValue)
+                r = r.Where(s => s.Age <= q.Age_End);
+
+            return r;
         }
  
          

@@ -70,5 +70,28 @@ namespace SF.Web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            var user=UserService.Login(model.User,model.Password);
+            if(user!=null)
+            {
+                this.SetCurrentUser(user);
+                return RedirectToAction("Index", "tree");
+            }
+            else
+            {
+                ModelState.AddModelError("Password", "用户名或密码不正确.");
+                return View(model);
+            }
+        }
+    }
+
+    public class LoginModel
+    {
+        public string User { get; set; }
+
+        public string Password { get; set; }
     }
 }

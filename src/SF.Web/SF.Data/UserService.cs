@@ -49,5 +49,24 @@ namespace SF.Data
                 return conn.Query<User>(sql).ToList();
             }
         }
+
+        public static List<int> GetChildUsers(int id)
+        {
+            var sql = "select Id from `User` where IsDelete=0 and (id=@id or ParentUser=@id)";
+            using (var conn = Database.GetConn())
+            {
+                return conn.Query<int>(sql, new {id=id }).ToList();
+            }
+        }
+
+        public static User Login(string username,string password)
+        {
+            var sql = "select * from `User` where IsDelete=0 and level=2 and UserName=@uname and Password=@pass";
+            using (var conn = Database.GetConn())
+            {
+                var count = conn.Query<User>(sql, new { uname = username, pass = password }).SingleOrDefault();
+                return count;
+            }
+        }
     }
 }

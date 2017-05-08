@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\TreeQueryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="validate.cs" />
@@ -185,6 +186,7 @@
     <Content Include="css\new_user.css" />
     <Content Include="css\page_editor.css" />
     <Content Include="css\page_list.css" />
+    <Content Include="css\page_login.css" />
     <Content Include="css\user_manage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

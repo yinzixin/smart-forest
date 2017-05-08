@@ -70,7 +70,13 @@ namespace SF.Data
         {
             using(var conn=Database.GetConn())
             {
-                var res = conn.GetList<Tree>();
+                var ids = UserService.GetChildUsers(userID);
+                var sql = "select * from tree where IsDelete=0 and userID in @ids";
+                if (userID == 0)
+                {
+                    sql = "select * from tree where IsDelete=0";
+                }
+                var res = conn.Query<Tree>(sql, new { ids = ids });
                 return res;
             }
         }
