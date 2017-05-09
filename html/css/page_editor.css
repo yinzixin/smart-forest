@@ -68,9 +68,9 @@
   padding-left: 5px;
 }
 .tab-container .tab-contents .field-line .line-right .a-upload {
-  height: 120px;
-  width: 300px;
-  line-height: 120px;
+  height: 150px;
+  width: 150px;
+  line-height: 150px;
   position: relative;
   cursor: pointer;
   color: #888;
@@ -83,6 +83,10 @@
   display: inline-block;
   *display: inline;
   *zoom: 1;
+}
+.tab-container .tab-contents .field-line .line-right .a-upload img {
+  width: 150px;
+  height: 150px;
 }
 .tab-container .tab-contents .field-line .line-right .a-upload input {
   position: absolute;
