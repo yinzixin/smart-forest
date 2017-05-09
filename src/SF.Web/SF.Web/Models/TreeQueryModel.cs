@@ -28,5 +28,7 @@ namespace SF.Web.Models
         public decimal? Root_End { get; set; }
 
         public int Current { get; set; }
+
+        public int? Jump { get; set; }
     }
 }

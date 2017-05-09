@@ -3,6 +3,7 @@
     ViewBag.Title = "古树编辑";
 }
 <link href="/css/page_editor.css" rel="stylesheet" />
+<script src="/js/ajaxfileupload.js"></script>
 <div class="tab-container">
     @using (Html.BeginForm())
     {
@@ -153,7 +154,7 @@
             <div class="field-line">
                 <span class="line-left">古树图片</span>
                 <div class="line-right">
-                    <label class="a-upload">+<input type="file" /></label>
+                    <label class="a-upload">+<input id="fileupload" name="fileupload" type="file" onchange="filePictureChange()" /></label>
                     <div class="line-desc">
                         <p>图片尺寸：高xxx 宽xxx</p>
                         <p>图片上传说明：支持jpg、bmp、png格式，单图片不超过2M</p>
@@ -545,3 +546,22 @@
         </div>
     }
 </div>
+<script type="text/javascript">
+    function filePictureChange() {
+        $.ajaxFileUpload({
+            url: "/tree/Upload", //用于文件上传的服务器端请求地址
+            type: "post",
+            secureuri: false, //一般设置为false
+            fileElementId: "fileupload", //文件上传空间的id属性
+            dataType: "json", //返回值类型 一般设置为json
+            success: function (data, status) {  //服务器成功响应处理函数
+                //alert(data.FileName);
+                alert(data.FilePath);
+               // alert(data.fileSize);
+            },
+            error: function (data, status, e) {  //服务器响应失败处理函数
+                alert(e);
+            }
+        });
+    };
+</script>

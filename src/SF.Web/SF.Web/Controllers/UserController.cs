@@ -11,12 +11,14 @@ namespace SF.Web.Controllers
     public class UserController : BaseController
     {
         // GET: User
+         [UserProfileFilter]
         public ActionResult Index()
         {
             var list = UserService.Query();
             return View(list);
         }
 
+         [UserProfileFilter]
         [HttpGet]
         public ActionResult Create()
         {
@@ -24,7 +26,7 @@ namespace SF.Web.Controllers
             ViewBag.ParentUserList = opt;
             return View();
         }
-
+         [UserProfileFilter]
         [HttpPost]
         public ActionResult Create(User model)
         {
@@ -40,6 +42,7 @@ namespace SF.Web.Controllers
                 return View(model);
         }
 
+         [UserProfileFilter]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -50,7 +53,7 @@ namespace SF.Web.Controllers
             return View(model);
         }
 
-
+         [UserProfileFilter]
         [HttpPost]
         public ActionResult Edit(User model)
         {
@@ -85,6 +88,12 @@ namespace SF.Web.Controllers
                 ModelState.AddModelError("Password", "用户名或密码不正确.");
                 return View(model);
             }
+        }
+
+        public ActionResult Logout()
+        {
+            Session["current_user"] = null;
+            return RedirectToAction("Login", "User");
         }
     }
 

@@ -176,6 +176,7 @@
     <Compile Include="Models\TreeQueryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="UserProfileFilter.cs" />
     <Compile Include="validate.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +213,7 @@
     <Content Include="images\icon-up.png" />
     <Content Include="images\icon-xl.png" />
     <Content Include="images\sign-out.png" />
+    <Content Include="js\ajaxfileupload.js" />
     <Content Include="js\editor.js" />
     <Content Include="js\new_user.js" />
     <Content Include="js\page_list.js" />

@@ -16,9 +16,9 @@
     <div class="page-common">
         <div class="page-head">
             <div class="head-icon"><img src="/images/bg1.png"></div>
-            <h3 class="head-title">智慧林业</h3>
+            <h3 class="head-title">@ViewBag.User.Title</h3>
             <div class="head-name">
-                DMPDMP<img src="/images/sign-out.png">
+                @ViewBag.User.RealName <a href="/user/logout"><img src="/images/sign-out.png"></a>
             </div>
         </div>
         <div class="clear"></div>
@@ -31,12 +31,15 @@
                             <h6>古树</h6>
                         </a>
                     </li>
+                    @if(ViewBag.User.ID==0)
+                    { 
                     <li class="menu-item">
                         <a href="/user">
                             <img src="/images/icon-list2.png">
                             <h6>用户</h6>
                         </a>
                     </li>
+                    }
                 </ul>
             </div>
             <div class="content-right">

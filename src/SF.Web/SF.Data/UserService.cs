@@ -61,7 +61,7 @@ namespace SF.Data
 
         public static User Login(string username,string password)
         {
-            var sql = "select * from `User` where IsDelete=0 and level=2 and UserName=@uname and Password=@pass";
+            var sql = "select * from `User` where IsDelete=0  and UserName=@uname and Password=@pass";
             using (var conn = Database.GetConn())
             {
                 var count = conn.Query<User>(sql, new { uname = username, pass = password }).SingleOrDefault();
