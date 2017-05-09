@@ -35,6 +35,9 @@
   color: #439c97;
   border-bottom: 3px solid #439c97;
 }
+.content-box .box-tab .tab-list .tab-header.active a {
+  color: #439c97 !important;
+}
 .all-content {
   /*  display: none;*/
   clear: both;
