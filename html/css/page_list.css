@@ -246,7 +246,7 @@
   color: #ffffff;
 }
 .float-details .detail-block .slist {
-  display: none;
+  /*display: none;*/
   width: 300px;
   padding-bottom: 20px;
   background-color: #ffffff;
