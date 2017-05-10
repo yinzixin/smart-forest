@@ -18,7 +18,7 @@
             <p class="contents-title" id="info_0">基本信息</p>
             <div class="field-line">
                 <span class="line-left">古树编号<i class="">*</i></span>
-                <div class="line-right"> @Html.TextBoxFor(m => m.Number, new { @class="input-long"}) </div>
+                <div class="line-right"> @Html.TextBoxFor(m => m.Number, new { @class = "input-long" }) </div>
                 @Html.ValidationMessageFor(m => m.Number)
             </div>
             <div class="field-line">
@@ -48,8 +48,8 @@
             <div class="field-line">
                 <span class="line-left">胸围<i class="">*</i></span>
                 <div class="line-right">
-                   @Html.TextBoxFor(m => m.ChestSize, new { @class = "small-text" })
-                    <span class="box-size">CM</span> @Html.ValidationMessageFor(m=>m.ChestSize)
+                    @Html.TextBoxFor(m => m.ChestSize, new { @class = "small-text" })
+                    <span class="box-size">CM</span> @Html.ValidationMessageFor(m => m.ChestSize)
                 </div>
             </div>
             <div class="field-line">
@@ -65,7 +65,7 @@
                     <label class="radio-style">
                         @Html.RadioButtonFor(m => m.Health, "良好", new { @class = "radios" }) 良好
                         @*<input type="radio" class="radios" name="radios" />
-                        良好*@
+                            良好*@
                     </label>
                     <label class="radio-style">
                         @Html.RadioButtonFor(m => m.Health, "一般", new { @class = "radios" }) 一般
@@ -85,7 +85,7 @@
             <div class="field-line">
                 <span class="line-left">经度<i class="">*</i></span>
                 <div class="line-right">
-                  @Html.TextBoxFor(m => m.LonText, new { @class = "small-text" })
+                    @Html.TextBoxFor(m => m.LonText, new { @class = "small-text" })
                 </div>
             </div>
             <div class="field-line">
@@ -98,7 +98,7 @@
                 <span class="line-left">地点类别</span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.AddressType, new { @class = "input-long" })
-                    
+
                 </div>
             </div>
             <div class="field-line ">
@@ -106,7 +106,7 @@
                 <div class="line-right">
                     <label class="radio-style">
                         @Html.RadioButtonFor(m => m.CivilizedLevel, "野外", new { @class = "radios" }) 野外
-                        
+
                     </label>
                     <label class="radio-style">
                         @Html.RadioButtonFor(m => m.CivilizedLevel, "农村", new { @class = "radios" })
@@ -127,11 +127,11 @@
                 <span class="line-left">是否在册</span>
                 <div class="line-right">
                     <label class="radio-style">
-                       @Html.RadioButtonFor(m => m.IsBooked, true, new { @class = "radios" })
+                        @Html.RadioButtonFor(m => m.IsBooked, true, new { @class = "radios" })
                         是
                     </label>
                     <label class="radio-style">
-                       @Html.RadioButtonFor(m => m.IsBooked, false, new { @class = "radios" })
+                        @Html.RadioButtonFor(m => m.IsBooked, false, new { @class = "radios" })
                         否
                     </label>
                 </div>
@@ -152,7 +152,13 @@
             <div class="field-line">
                 <span class="line-left">古树图片</span>
                 <div class="line-right">
-                    <label class="a-upload">+<input type="file" /></label>
+                    @Html.HiddenFor(m => m.Photo)
+                    <label class="a-upload">
+                        <img id="uploadImage" style="display:none" />
+
+                        +
+                        <input id="fileupload" name="fileupload" type="file" onchange="filePictureChange()" />
+                    </label>
                     <div class="line-desc">
                         <p>图片尺寸：高xxx 宽xxx</p>
                         <p>图片上传说明：支持jpg、bmp、png格式，单图片不超过2M</p>
@@ -163,7 +169,7 @@
                 <span class="line-left">相关故事</span>
                 <div class="line-right">
                     @*<textarea></textarea>*@
-                    @Html.TextAreaFor(m=>m.Story)
+                    @Html.TextAreaFor(m => m.Story)
                     <div class="line-desc">
                         <p>不超过500个字</p>
                     </div>
@@ -289,7 +295,7 @@
             <div class="field-line ">
                 <span class="line-left">植物志资料</span>
                 <div class="line-right">
-                    @Html.TextAreaFor(m=>m.Information)
+                    @Html.TextAreaFor(m => m.Information)
                 </div>
             </div>
             <p class="contents-title" id="info_4">其他调查情况</p>
@@ -297,7 +303,7 @@
                 <span class="line-left">土质</span>
                 <div class="line-right">
                     <label class="radio-style">
-                       @Html.RadioButtonFor(m => m.OtherSoil, "好", new { @class = "radios" })
+                        @Html.RadioButtonFor(m => m.OtherSoil, "好", new { @class = "radios" })
                         好
                     </label>
                     <label class="radio-style">
@@ -314,7 +320,7 @@
                 <span class="line-left">排水</span>
                 <div class="line-right">
                     <label class="radio-style">
-                       @Html.RadioButtonFor(m => m.OtherDrain, "自然排水", new { @class = "radios" })
+                        @Html.RadioButtonFor(m => m.OtherDrain, "自然排水", new { @class = "radios" })
                         自然排水
                     </label>
                     <label class="radio-style">
@@ -391,8 +397,8 @@
                         无
                     </label>
                 </div>
-                </div>
-            
+            </div>
+
             <div class="field-line ">
                 <span class="line-left">地面标高</span>
                 <div class="line-right">
@@ -405,8 +411,8 @@
                         无
                     </label>
                 </div>
-                </div>
-             
+            </div>
+
             <div class="field-line ">
                 <span class="line-left">古树群</span>
                 <div class="line-right">
@@ -475,8 +481,8 @@
             <div class="field-line">
                 <span class="line-left">保护半径</span>
                 <div class="line-right">
-                    @Html.TextBoxFor(m => m.OtherProtectRadient, new { @class="small-text"})
-                   
+                    @Html.TextBoxFor(m => m.OtherProtectRadient, new { @class = "small-text" })
+
                     <span class="box-size">M</span>
                 </div>
             </div>
@@ -485,9 +491,9 @@
                 <div class="line-right">@Html.TextBoxFor(m => m.OtherRoot, new { @class = "input-long" })</div>
             </div>
             @*<div class="field-line">
-                <span class="line-left">近5年古树及周边变化</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.OtherChanges, new { @class = "input-long" })</div>
-            </div>*@
+                    <span class="line-left">近5年古树及周边变化</span>
+                    <div class="line-right">@Html.TextBoxFor(m => m.OtherChanges, new { @class = "input-long" })</div>
+                </div>*@
             <div class="field-line">
                 <span class="line-left">最近建筑</span>
                 <div class="line-right">@Html.TextBoxFor(m => m.OtherBuilding, new { @class = "input-long" })</div>
@@ -503,7 +509,7 @@
             <div class="field-line ">
                 <span class="line-left">近5年古树及周边变化</span>
                 <div class="line-right">
-                   @Html.TextAreaFor(m=>m.OtherChanges)
+                    @Html.TextAreaFor(m => m.OtherChanges)
                 </div>
             </div>
             <p class="contents-title" id="info_5">负责&调查人员</p>
@@ -541,6 +547,26 @@
             </div>
             @Html.ValidationSummary()
             <div style="height: 200px;"></div>
-         </div>
+        </div>
     }
 </div>
+<script type="text/javascript">
+    function filePictureChange() {
+        $.ajaxFileUpload({
+            url: "/tree/Upload", //用于文件上传的服务器端请求地址
+            type: "post",
+            secureuri: false, //一般设置为false
+            fileElementId: "fileupload", //文件上传空间的id属性
+            dataType: "json", //返回值类型 一般设置为json
+            success: function (data, status) {  //服务器成功响应处理函数
+                //alert(data.FileName);
+                $('#uploadImage').attr('src', data.FilePath);
+                $('#uploadImage').show();
+                $('#Photo').val(data.FilePath);
+            },
+            error: function (data, status, e) {  //服务器响应失败处理函数
+                alert(e);
+            }
+        });
+    };
+</script>

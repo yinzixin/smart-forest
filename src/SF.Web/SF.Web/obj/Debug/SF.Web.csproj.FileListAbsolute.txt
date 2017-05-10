@@ -62,3 +62,5 @@ C:\Code\SmartForest\src\SF.Web\SF.Web\bin\SF.Data.pdb
 C:\Code\SmartForest\src\SF.Web\SF.Web\bin\SF.Model.pdb
 C:\Code\SmartForest\src\SF.Web\SF.Web\bin\DapperExtensions.pdb
 C:\Code\SmartForest\src\SF.Web\SF.Web\bin\Dapper.xml
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\ThoughtWorks.QRCode.dll
+C:\Code\SmartForest\src\SF.Web\SF.Web\bin\ICSharpCode.SharpZipLib.dll

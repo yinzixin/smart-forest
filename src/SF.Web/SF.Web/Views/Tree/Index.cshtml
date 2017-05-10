@@ -50,7 +50,7 @@
                         <div class="page-download ">
                             <a href="javascript:;" class="file">
                                 下载名片
-                                <input type="file" name="file" id="" aria-required="true">
+                                @*<input type="file" name="file" id="" aria-required="true">*@
                             </a>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         @foreach (var tree in @Model)
                         {
                             <tr class="gradeX odd" role="row">
-                                <td><input type="checkbox" class="checkboxes" value="1"> </td>
+                                <td><input type="checkbox" class="checkboxes" value="@tree.ID"> </td>
                                 <td class="center"> @tree.Number </td>
                                 <td class="center">@tree.Name</td>
                                 <td class="center">@tree.NameLatin</td>
@@ -119,13 +119,14 @@
                                     <a href="/tree/edit/@tree.ID" title="编辑"><img src="/images/icon-editor.png" /></a>
                                     <a title="地图"><img src="/images/icon-img.png" class="icon-img" /></a>
                                     <a title="名片" class="card-hover">
-                                        <img src="/images/icon-card.png" class="icon-card" />
+                                     <img src="/images/icon-card.png" class="icon-card" />
                                         <div class="box-card">
                                             <img src="/images/ewm.png" />
                                             <div class="card-content">
-                                                <p>编号：<span>01</span></p>
+                                                <img src='@("/label/" + @tree.ID + ".png")' />
+                                                @*<p>编号：<span>01</span></p>
                                                 <p>名称：<span>大将军</span></p>
-                                                <p>拉丁名：<span>迎客松</span></p>
+                                                <p>拉丁名：<span>迎客松</span></p>*@
                                             </div>
                                         </div>
                                     </a>
@@ -176,12 +177,28 @@
 <script src="/js/page_list.js"></script>
 <script type="text/javascript">
     $(function () {
+
+        //pagination
         $('ul.pagination a').click(function () {
             $('#qcurrent').val($(this).attr('data-page'));
             $('form').submit();
-
-
         });
+
+        //dowload labels
+        $('.page-download').click(function () {
+            var ids = [];
+            $('table input:checked').each(function () {
+                ids.push($(this).val());
+            });
+            if (ids.length > 0) {
+                var param = ids.join(',');
+                var url = "/tree/downloadlabel?ids=" + param;
+                window.open(url);
+            } else {
+                alert('请至少选择一棵树');
+            }
+        });
+
     });
 
 </script>

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using SF.Data;
 using SF.Model;
 using System.IO;
+using ICSharpCode.SharpZipLib.Zip;
+using ICSharpCode.SharpZipLib.Core;
 
 namespace SF.Web.Controllers
 {
@@ -57,6 +59,11 @@ namespace SF.Web.Controllers
             if (ModelState.IsValid)
             { 
                 TreeService.Update(model);
+
+                var path=Server.MapPath("/label");
+                var bytes=TreeTagPainter.Paint(model);
+                System.IO.File.WriteAllBytes(path + "/" + model.ID + ".png", bytes);
+
                 return RedirectToAction("Index");
             }
             else
@@ -136,6 +143,36 @@ namespace SF.Web.Controllers
                 r = r.Where(s => s.Age <= q.Age_End);
 
             return r;
+        }
+
+        public ActionResult TreeLabel(long id)
+        {
+            var tree = TreeService.Get(id);
+           var data= TreeTagPainter.Paint(tree);
+           return File(data, "image/jpeg");
+        }
+
+        public ActionResult DownloadLabel(string ids)
+        {
+            var id=ids.Split(',').Select(c => long.Parse(c));
+            MemoryStream memory = new MemoryStream();
+            using (var output = new ZipOutputStream(memory))
+            {
+                foreach (var i in id)
+                {
+                    var tree = TreeService.Get(i);
+                    var data = TreeTagPainter.Paint(tree);
+
+                    ZipEntry entry = new ZipEntry(tree.Name + "-" + tree.ID + ".png");
+                    entry.DateTime = DateTime.Now;
+                    output.PutNextEntry(entry);
+                    output.Write(data, 0, data.Length);
+                }
+                output.Finish();
+                output.Close();
+            }
+
+            return File(memory.ToArray(),"application/x-zip-compressed","tree-label.zip");
         }
 
           [UserProfileFilter]

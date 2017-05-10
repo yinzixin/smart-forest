@@ -154,9 +154,21 @@
             <div class="field-line">
                 <span class="line-left">古树图片</span>
                 <div class="line-right">
-                    <label class="a-upload">+<input id="fileupload" name="fileupload" type="file" onchange="filePictureChange()" /></label>
+                    @Html.HiddenFor(m=>m.Photo)
+                    <label class="a-upload">
+                        @if(string.IsNullOrEmpty(Model.Photo))
+                        { 
+                         <img id="uploadImage" style="display:none"/>
+                        }
+                        else
+                        {
+                            <img id="uploadImage" src="@Model.Photo" />
+                        }
+                        +
+                        <input id="fileupload" name="fileupload" type="file" onchange="filePictureChange()" />
+                    </label>
                     <div class="line-desc">
-                        <p>图片尺寸：高xxx 宽xxx</p>
+                        @*<p>图片尺寸：高xxx 宽xxx</p>*@
                         <p>图片上传说明：支持jpg、bmp、png格式，单图片不超过2M</p>
                     </div>
                 </div>
@@ -556,8 +568,9 @@
             dataType: "json", //返回值类型 一般设置为json
             success: function (data, status) {  //服务器成功响应处理函数
                 //alert(data.FileName);
-                alert(data.FilePath);
-               // alert(data.fileSize);
+                $('#uploadImage').attr('src', data.FilePath);
+                $('#uploadImage').show();
+                $('#Photo').val(data.FilePath);
             },
             error: function (data, status, e) {  //服务器响应失败处理函数
                 alert(e);
