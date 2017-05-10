@@ -333,9 +333,8 @@ nav input[type=text] {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
 }
-.box-card img {
-  width: 80px!important;
-  margin: 33px 20px;
+.box-card .card-img {
+  width: 100%;
 }
 .box-card .card-content {
   width: 165px;
