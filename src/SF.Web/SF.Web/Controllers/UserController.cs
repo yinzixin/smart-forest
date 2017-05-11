@@ -85,7 +85,7 @@ namespace SF.Web.Controllers
             }
             else
             {
-                ModelState.AddModelError("Password", "用户名或密码不正确.");
+                ModelState.AddModelError("msg", "用户名或密码不正确.");
                 return View(model);
             }
         }

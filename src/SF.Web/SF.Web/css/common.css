@@ -230,3 +230,17 @@ a:hover {
   width: 14px;
   margin-right: 3px;
 }
+
+
+.field-validation-error{
+    font-size: 12px;
+    color: red;
+
+}
+
+input::-ms-clear {
+  display: none;
+}
+input::-ms-reveal {
+  display: none;
+}

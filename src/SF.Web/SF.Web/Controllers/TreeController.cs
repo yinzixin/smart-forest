@@ -23,6 +23,12 @@ namespace SF.Web.Controllers
                 var user = GetUser();
                 model.UserID = user.ID;
                 TreeService.Create(model);
+
+                var path = Server.MapPath("/label");
+                var bytes = TreeTagPainter.Paint(model, HttpContext.Request.Url.Host);
+                System.IO.File.WriteAllBytes(path + "/" + model.ID + ".png", bytes);
+
+
                 return RedirectToAction("Index");
             }
             else
@@ -61,7 +67,7 @@ namespace SF.Web.Controllers
                 TreeService.Update(model);
 
                 var path=Server.MapPath("/label");
-                var bytes=TreeTagPainter.Paint(model);
+                var bytes = TreeTagPainter.Paint(model, HttpContext.Request.Url.Host);
                 System.IO.File.WriteAllBytes(path + "/" + model.ID + ".png", bytes);
 
                 return RedirectToAction("Index");
@@ -84,7 +90,7 @@ namespace SF.Web.Controllers
                 var models = TreeService.Query(user.ID).ToList();
                 var result = DoQuery(q, models);
                 ViewBag.q = q;
-                int pageSize = 2;
+                int pageSize = 50;
                 int count = result.Count() % pageSize == 0 ? result.Count() / pageSize : result.Count() / pageSize + 1;
                 int pageStart = q.Current - pageSize < 1 ? 1 : q.Current - pageSize;
                 int pageEnd = q.Current + 2 > count ? count : q.Current + 2;
@@ -108,7 +114,7 @@ namespace SF.Web.Controllers
         public ActionResult Upload()
          {
              HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
-             if (files.Count == 0) return Json("Faild", JsonRequestBehavior.AllowGet);
+             if (files.Count == 0) return Content("failed"); // Json("Faild", JsonRequestBehavior.AllowGet);
         
           
              string FileEextension = Path.GetExtension(files[0].FileName);
@@ -123,8 +129,9 @@ namespace SF.Web.Controllers
                  files[0].SaveAs(fullFileName);
              }
              string fileName = files[0].FileName.Substring(files[0].FileName.LastIndexOf("\\") + 1, files[0].FileName.Length - files[0].FileName.LastIndexOf("\\") - 1);
-            
-             return Json(new { FileName = fileName, FilePath = virtualPath },  JsonRequestBehavior.AllowGet);
+             var str=Newtonsoft.Json.JsonConvert.SerializeObject(new { FileName = fileName, FilePath = virtualPath });
+            // return Json(new { FileName = fileName, FilePath = virtualPath },  JsonRequestBehavior.AllowGet);
+             return Content(str,"text/html");
          }
         IEnumerable<Tree> DoQuery(Models.TreeQueryModel q, IEnumerable<Tree> source)
         {
@@ -148,7 +155,7 @@ namespace SF.Web.Controllers
         public ActionResult TreeLabel(long id)
         {
             var tree = TreeService.Get(id);
-           var data= TreeTagPainter.Paint(tree);
+            var data = TreeTagPainter.Paint(tree, HttpContext.Request.Url.Host);
            return File(data, "image/jpeg");
         }
 
@@ -161,7 +168,7 @@ namespace SF.Web.Controllers
                 foreach (var i in id)
                 {
                     var tree = TreeService.Get(i);
-                    var data = TreeTagPainter.Paint(tree);
+                    var data = TreeTagPainter.Paint(tree, HttpContext.Request.Url.Host);
 
                     ZipEntry entry = new ZipEntry(tree.Name + "-" + tree.ID + ".png");
                     entry.DateTime = DateTime.Now;
@@ -173,6 +180,19 @@ namespace SF.Web.Controllers
             }
 
             return File(memory.ToArray(),"application/x-zip-compressed","tree-label.zip");
+        }
+
+        
+        public string Delete(long id)
+        {
+            TreeService.Delete(id);
+            return "OK";
+        }
+
+        public ActionResult View(long id)
+        {
+            var tree = TreeService.Get(id);
+            return View(tree);
         }
 
           [UserProfileFilter]

@@ -25,14 +25,14 @@
                     </div>
                     <!--end-->
                     <!--float-->
-                    <div class="map-float">
+                    <div class="map-float" style="display:none">
                         <div class="float-brief">
                             <div class="top-title">
                                 <span id="info-name" class="top-name">银杏（YF0101）</span>
                                 <span class="icon-close"></span>
                             </div>
                             <div class="top-images">
-                                <img src="/images/icon-bl.png" class="img-left" />
+                                <img id="tree-photo" src="/images/icon-bl.png" class="img-left" />
                                 <img src="/images/ewm.png" class="img-right">
                             </div>
                         </div>
@@ -82,8 +82,9 @@
 
         function fillInfoPanel(tree)
         {
+            $('#tree-photo').attr('src', tree.Photo);
             $('#info-name').html(tree.Name + '(' + tree.Number + ')');
-            $('#info-age').html(tree.Age);
+            $('#info-age').html(tree.Age+"年");
             $('#info-height').html(tree.Height);
             $('#info-chestSize').html(tree.ChestSize);
             $('#info-rootSize').html(tree.RootSize);

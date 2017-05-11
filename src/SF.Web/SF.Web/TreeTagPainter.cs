@@ -12,7 +12,7 @@ namespace SF.Web
 {
     public class TreeTagPainter
     {
-        public static byte[]  Paint(Tree t)
+        public static byte[]  Paint(Tree t,string host)
         {
            
  
@@ -35,7 +35,7 @@ namespace SF.Web
                 var codec = new QRCodeEncoder();
                 codec.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
                 codec.QRCodeScale = 4;
-                var barcode = codec.Encode("http://localhost/tree/view/" + t.ID);
+                var barcode = codec.Encode("http://"+host + "/tree/view/" + t.ID);
                 
                 var rec = new Rectangle(1100, 300, 600, 600);
                 graph.DrawImage(barcode, rec, new Rectangle(0, 0, barcode.Width, barcode.Height), GraphicsUnit.Pixel);

@@ -3,7 +3,7 @@
     ViewBag.Title = "古树编辑";
 }
 <link href="/css/page_editor.css" rel="stylesheet" />
-<script src="/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 <div class="tab-container">
     @using (Html.BeginForm())
     {
@@ -553,7 +553,7 @@
                 <button class="btn btn-save">保存</button>
                 <button class="btn btn-cancel">取消</button>
             </div>
-            @Html.ValidationSummary()
+            @*@Html.ValidationSummary()*@
             <div style="height: 200px;"></div>
         </div>
     }

@@ -8,8 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <link href="/css/common.css" rel="stylesheet" />
-    <link href="/css/page_login.css" rel="stylesheet" />
+    <link href="/css/common.css?2" rel="stylesheet" />
+    <link href="/css/page_login.css?3" rel="stylesheet" />
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="/vendor/jquery.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -21,16 +21,20 @@
     {
         <div class="login-content">
             <p class="content-title">用户登陆</p>
-            <div class="login-user">
-              @Html.TextBoxFor(m=>m.User)
+            <div class="login-user content-line">
+               @Html.TextBoxFor(m => m.User, new { placeholder = "用户名" })   
+                 
             </div>
-            <div class="login-password">
-                @Html.PasswordFor(m=>m.Password)
+            <div class="login-password content-line">
+                @Html.PasswordFor(m => m.Password, new { placeholder = "密码" })
+                <div class="error-msg tl">
+                     @Html.ValidationMessage("msg")
+                </div>
             </div>
-            @Html.ValidationSummary()
             <button class="btn btn-size">登陆</button>
         </div>
     }
 </body>
 </html>
 
+ 
