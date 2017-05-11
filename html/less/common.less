@@ -6,7 +6,9 @@
 ul{
     list-style: none;
 }
-
+/*input::-ms-clear{display:none;}*/
+input::-ms-clear{display:none;}
+input::-ms-clear, ::-ms-reveal{display: none;}
 input,button,select,textarea{outline:none}
 a:link,a:visited{text-decoration:none !important; outline: none!important;}
 a:hover{text-decoration:none !important; outline: none!important;}
@@ -232,4 +234,8 @@ a:hover{text-decoration:none !important; outline: none!important;}
  display: inline-block;
     width: 14px;
     margin-right:3px;
+}
+.field-validation-error{
+    font-size: 12px;
+    color: red;
 }

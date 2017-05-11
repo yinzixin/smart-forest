@@ -352,3 +352,9 @@ nav input[type=text] {
 .icon-delete {
   width: 19px!important;
 }
+input::-ms-clear {
+  display: none;
+}
+input::-ms-reveal {
+  display: none;
+}
