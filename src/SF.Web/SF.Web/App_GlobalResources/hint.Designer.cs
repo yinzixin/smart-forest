@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 请输入数字.
+        ///   Looks up a localized string similar to 格式不正确.
         /// </summary>
         internal static string PropertyValueInvalid {
             get {

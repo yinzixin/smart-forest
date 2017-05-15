@@ -61,7 +61,7 @@
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>
-                <button class="btn btn-cancel">取消</button>
+                <button onclick="returnList()" type="button" class="btn btn-save">取消</button>
             </div>
         </div>
     }
@@ -70,9 +70,8 @@
 <script src="/js/new_user.js"></script>
 
 <script type="text/javascript">
-    $(function () {
-
-
-
-    });
+    function returnList() {
+        window.location.href = '/user';
+        return false;
+    }
 </script>

@@ -79,11 +79,11 @@ namespace SF.Model
         public string OtherBulkhead { get; set; }
         public string OtherThunderProtector { get; set; }
         public string Inspector { get; set; }
-        public string InspectTime { get; set; }
+        public DateTime? InspectTime { get; set; }
         public string Checker { get; set; }
         public DateTime? CheckTime { get; set; }
         public string Creator { get; set; }
-        public string CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
 
         public string LonText { get; set; }

@@ -86,13 +86,13 @@
             <div class="field-line">
                 <span class="line-left">经度<i class="">*</i></span>
                 <div class="line-right">
-                    @Html.TextBoxFor(m => m.LonText, new { @class = "small-text" })
+                    @Html.TextBoxFor(m => m.LonText, new { @class = "small-text" }) @Html.ValidationMessageFor(m=>m.LonText)
                 </div>
             </div>
             <div class="field-line">
                 <span class="line-left">纬度<i class="">*</i></span>
                 <div class="line-right">
-                    @Html.TextBoxFor(m => m.LatText, new { @class = "small-text" })
+                    @Html.TextBoxFor(m => m.LatText, new { @class = "small-text" }) @Html.ValidationMessageFor(m => m.LatText)
                 </div>
             </div>
             <div class="field-line">
@@ -532,7 +532,7 @@
             </div>
             <div class="field-line">
                 <span class="line-left">复核时间</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.CheckTime, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.CheckTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m=>m.CheckTime)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">上传人</span>
@@ -544,14 +544,18 @@
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>
-                <button class="btn btn-cancel">取消</button>
+                <button onclick="returnList()" type="button" class="btn btn-save">取消</button>
             </div>
-            @Html.ValidationSummary()
+            @*@Html.ValidationSummary()*@
             <div style="height: 200px;"></div>
         </div>
     }
 </div>
 <script type="text/javascript">
+    function returnList() {
+        window.location.href = '/tree';
+        return false;
+    }
     function filePictureChange() {
         $.ajaxFileUpload({
             url: "/tree/Upload", //用于文件上传的服务器端请求地址

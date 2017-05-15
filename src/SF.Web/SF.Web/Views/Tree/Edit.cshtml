@@ -551,7 +551,7 @@
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>
-                <button class="btn btn-cancel">取消</button>
+                <button onclick="returnList()" type="button"  class="btn btn-save">取消</button>
             </div>
             @*@Html.ValidationSummary()*@
             <div style="height: 200px;"></div>
@@ -559,6 +559,10 @@
     }
 </div>
 <script type="text/javascript">
+    function returnList() {         
+        window.location.href = '/tree';
+        return false;
+    }
     function filePictureChange() {
         $.ajaxFileUpload({
             url: "/tree/Upload", //用于文件上传的服务器端请求地址
