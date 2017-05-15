@@ -69,6 +69,18 @@ namespace SF.Web.Controllers
                 return View(model);
         }
 
+         public string Del(int id)
+         {
+             UserService.Del(id);
+             return "ok";
+         }
+
+         public string Pause(int id)
+         {
+             UserService.Pause(id);
+             return "ok";
+         }
+
         public ActionResult Login()
         {
             return View();

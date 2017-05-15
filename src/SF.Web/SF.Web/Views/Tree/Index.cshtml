@@ -108,8 +108,8 @@
                                 <td class="center"> @tree.Number </td>
                                 <td class="center">@tree.Name</td>
                                 <td class="center">@tree.NameLatin</td>
-                                <td class="center"> 是 </td>
-                                <td class="center"> 是 </td>
+                                <td class="center"> @(tree.IsFamous.HasValue&&tree.IsFamous.Value?"是":"否") </td>
+                                <td class="center"> @(tree.IsBooked.HasValue && tree.IsBooked.Value ? "是" : "否")  </td>
                                 <td class="center"> @tree.County </td>
 
                                 <td class="center"> @tree.Dutier </td>
@@ -118,10 +118,10 @@
                                 <td class="sorting_1">
                                     <a href="/tree/edit/@tree.ID" title="编辑"><img src="/images/icon-editor.png" /></a>
                                     <a title="地图" href="/tree/map"><img src="/images/icon-img.png" class="icon-img" /></a>
-                                    <a title="名片" class="card-hover" href="/tree/treelabel/@tree.ID">
+                                    <a title="名片" class="card-hover" href="/tree/treelabel/@tree.ID?@DateTime.Now.Ticks">
                                      <img src="/images/icon-card.png" class="icon-card" />
                                         <div class="box-card">                                            
-                                                <img src='@("/label/" + @tree.ID + ".png")' class="card-img"/>                                            
+                                                <img src='@("/label/" + @tree.ID + ".png?"+DateTime.Now.Ticks)' class="card-img"/>                                            
                                         </div>
                                     </a>
                                     <a onclick="del(@tree.ID);" title="删除"><img src="/images/icon-delete.png" class="icon-delete" /></a>
@@ -197,9 +197,13 @@
 
 
     function del(id){
-        $.get("/tree/delete/"+id,function(data){
-            window.location.href=window.location.href;
-        });
+        var y=confirm("确实要删除吗?")
+        if(y)
+        {
+            $.get("/tree/delete/"+id,function(data){
+                window.location.href=window.location.href;
+            });
+        }
     }
  
     document.onkeydown = function(e) {

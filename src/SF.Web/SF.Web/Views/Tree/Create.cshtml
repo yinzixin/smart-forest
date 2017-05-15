@@ -57,7 +57,7 @@
                 <span class="line-left">根围<i class="">*</i></span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.RootSize, new { @class = "small-text" })
-                    <span class="box-size">CM</span>
+                    <span class="box-size">CM</span> @Html.ValidationMessageFor(m => m.RootSize)
                 </div>
             </div>
             <div class="field-line  ">
@@ -74,6 +74,7 @@
                     <label class="radio-style">
                         @Html.RadioButtonFor(m => m.Health, "濒死", new { @class = "radios" }) 濒死
                     </label>
+                    @Html.ValidationMessageFor(m => m.Health)
                 </div>
             </div>
             <p class="contents-title" id="info_1">地理位置</p>
@@ -247,15 +248,15 @@
             <div class="field-line">
                 <span class="line-left">冠径南北</span>
                 <div class="line-right">
-                    @Html.TextBoxFor(m => m.CrownNorthSouth, new { @class = "small-text" })
-                    <span class="box-size">M</span>
+                    @Html.TextBoxFor(m => m.CrownNorthSouth, new { @class = "small-text" }) 
+                    <span class="box-size">M</span> @Html.ValidationMessageFor(m => m.CrownNorthSouth)
                 </div>
             </div>
             <div class="field-line">
                 <span class="line-left">冠径东西</span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.CrownEastWest, new { @class = "small-text" })
-                    <span class="box-size">M</span>
+                    <span class="box-size">M</span>@Html.ValidationMessageFor(m => m.CrownEastWest)
                 </div>
             </div>
             <div class="field-line ">
@@ -484,7 +485,7 @@
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.OtherProtectRadient, new { @class = "small-text" })
 
-                    <span class="box-size">M</span>
+                    <span class="box-size">M</span> @Html.ValidationMessageFor(m=>m.OtherProtectRadient)
                 </div>
             </div>
             <div class="field-line">
@@ -524,7 +525,7 @@
             </div>
             <div class="field-line">
                 <span class="line-left">调查时间</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.InspectTime, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.InspectTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.InspectTime)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">复核人</span>
@@ -535,12 +536,12 @@
                 <div class="line-right">@Html.TextBoxFor(m => m.CheckTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m=>m.CheckTime)</div>
             </div>
             <div class="field-line">
-                <span class="line-left">上传人</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.Creator, new { @class = "input-long" })</div>
+                <span class="line-left">上传人<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.Creator, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.Creator)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">上传时间</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.CreateTime, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.CreateTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.CreateTime) </div>
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>

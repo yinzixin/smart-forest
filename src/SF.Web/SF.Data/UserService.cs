@@ -68,5 +68,23 @@ namespace SF.Data
                 return count;
             }
         }
+
+        public static void Del(int id)
+        {
+            var sql = "update `user` set IsDelete=1 where ID=@id";
+            using (var conn = Database.GetConn())
+            {
+                conn.Execute(sql, new   {id=id });
+            }
+        }
+
+        public static void Pause(int id)
+        {
+            var sql = "update `user` set IsPause=1 where ID=@id";
+            using (var conn = Database.GetConn())
+            {
+                conn.Execute(sql, new { id = id });
+            }
+        }
     }
 }

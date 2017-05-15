@@ -27,11 +27,25 @@ namespace SF.Web
             {
                 graph.DrawString("古树名木调查资料", new Font(heiti, 40.0f, FontStyle.Regular),Brushes.Black, 650, 50);
                 graph.DrawString(t.Number, font12B, Brushes.Black, 80, 130);
-                graph.DrawString(t.Name, font40B, Brushes.Black, 300, 320);
 
-                graph.DrawString("拉丁名： " + t.NameLatin,font60,Brushes.Black, 80, 600);
+                var font = font40B;
+                while (graph.MeasureString(t.Name, font).Width > 900)
+                {
+                    font = new Font(heiti, (float)(font.Size * 0.9), FontStyle.Regular);
+                }
+                var size = graph.MeasureString(t.Name, font);
+                var left = (1100 - size.Width) / 2;
 
+                graph.DrawString(t.Name, font, Brushes.Black, left, 320);
 
+                var latin = "拉丁名 " + t.NameLatin;
+                font = font60;
+                while (graph.MeasureString(latin, font).Width > 1000)
+                {
+                    font = new Font(heiti, (float)(font.Size * 0.9), FontStyle.Regular);
+                }
+                graph.DrawString(latin,font,Brushes.Black, 80, 600);
+               
                 var codec = new QRCodeEncoder();
                 codec.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
                 codec.QRCodeScale = 4;

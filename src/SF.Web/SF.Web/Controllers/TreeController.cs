@@ -8,6 +8,8 @@ using SF.Model;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Core;
+using ThoughtWorks.QRCode.Codec;
+using System.Drawing.Imaging;
 
 namespace SF.Web.Controllers
 {
@@ -159,6 +161,16 @@ namespace SF.Web.Controllers
            return File(data, "image/jpeg");
         }
 
+        public ActionResult Barcode(long id)
+        {
+            var codec = new QRCodeEncoder();
+            codec.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
+            codec.QRCodeScale = 4;
+            var barcode = codec.Encode("http://" + HttpContext.Request.Url.Host + "/tree/view/" + id);
+             MemoryStream stream = new MemoryStream();
+             barcode.Save(stream, ImageFormat.Png);
+             return File(stream.ToArray(), "image/png");
+        }
         public ActionResult DownloadLabel(string ids)
         {
             var id=ids.Split(',').Select(c => long.Parse(c));

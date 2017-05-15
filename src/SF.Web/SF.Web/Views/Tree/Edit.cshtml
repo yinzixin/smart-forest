@@ -4,10 +4,11 @@
 }
 <link href="/css/page_editor.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+
 <div class="tab-container">
     @using (Html.BeginForm())
     {
-        @Html.HiddenFor(m=>m.ID)
+         @Html.HiddenFor(m => m.ID)
         <div class="tab-navs">
             <a class="active" href="#info_0">基本信息</a>
             <a href="#info_1">地理位置</a>
@@ -58,7 +59,7 @@
                 <span class="line-left">根围<i class="">*</i></span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.RootSize, new { @class = "small-text" })
-                    <span class="box-size">CM</span>
+                    <span class="box-size">CM</span> @Html.ValidationMessageFor(m => m.RootSize)
                 </div>
             </div>
             <div class="field-line  ">
@@ -75,6 +76,7 @@
                     <label class="radio-style">
                         @Html.RadioButtonFor(m => m.Health, "濒死", new { @class = "radios" }) 濒死
                     </label>
+                    @Html.ValidationMessageFor(m => m.Health)
                 </div>
             </div>
             <p class="contents-title" id="info_1">地理位置</p>
@@ -87,13 +89,13 @@
             <div class="field-line">
                 <span class="line-left">经度<i class="">*</i></span>
                 <div class="line-right">
-                    @Html.TextBoxFor(m => m.LonText, new { @class = "small-text" })
+                    @Html.TextBoxFor(m => m.LonText, new { @class = "small-text" }) @Html.ValidationMessageFor(m => m.LonText)
                 </div>
             </div>
             <div class="field-line">
                 <span class="line-left">纬度<i class="">*</i></span>
                 <div class="line-right">
-                    @Html.TextBoxFor(m => m.LatText, new { @class = "small-text" })
+                    @Html.TextBoxFor(m => m.LatText, new { @class = "small-text" }) @Html.ValidationMessageFor(m => m.LatText)
                 </div>
             </div>
             <div class="field-line">
@@ -154,11 +156,11 @@
             <div class="field-line">
                 <span class="line-left">古树图片</span>
                 <div class="line-right">
-                    @Html.HiddenFor(m=>m.Photo)
+                    @Html.HiddenFor(m => m.Photo)
                     <label class="a-upload">
-                        @if(string.IsNullOrEmpty(Model.Photo))
-                        { 
-                         <img id="uploadImage" style="display:none"/>
+                        @if (string.IsNullOrEmpty(Model.Photo))
+                        {
+                            <img id="uploadImage" style="display:none" />
                         }
                         else
                         {
@@ -168,7 +170,7 @@
                         <input id="fileupload" name="fileupload" type="file" onchange="filePictureChange()" />
                     </label>
                     <div class="line-desc">
-                        @*<p>图片尺寸：高xxx 宽xxx</p>*@
+                        
                         <p>图片上传说明：支持jpg、bmp、png格式，单图片不超过2M</p>
                     </div>
                 </div>
@@ -255,14 +257,14 @@
                 <span class="line-left">冠径南北</span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.CrownNorthSouth, new { @class = "small-text" })
-                    <span class="box-size">M</span>
+                    <span class="box-size">M</span> @Html.ValidationMessageFor(m => m.CrownNorthSouth)
                 </div>
             </div>
             <div class="field-line">
                 <span class="line-left">冠径东西</span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.CrownEastWest, new { @class = "small-text" })
-                    <span class="box-size">M</span>
+                    <span class="box-size">M</span>@Html.ValidationMessageFor(m => m.CrownEastWest)
                 </div>
             </div>
             <div class="field-line ">
@@ -491,7 +493,7 @@
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.OtherProtectRadient, new { @class = "small-text" })
 
-                    <span class="box-size">M</span>
+                    <span class="box-size">M</span> @Html.ValidationMessageFor(m => m.OtherProtectRadient)
                 </div>
             </div>
             <div class="field-line">
@@ -531,7 +533,7 @@
             </div>
             <div class="field-line">
                 <span class="line-left">调查时间</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.InspectTime, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.InspectTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.InspectTime)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">复核人</span>
@@ -539,19 +541,19 @@
             </div>
             <div class="field-line">
                 <span class="line-left">复核时间</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.CheckTime, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.CheckTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.CheckTime)</div>
             </div>
             <div class="field-line">
-                <span class="line-left">上传人</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.Creator, new { @class = "input-long" })</div>
+                <span class="line-left">上传人<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.Creator, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.Creator)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">上传时间</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.CreateTime, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.CreateTime, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.CreateTime) </div>
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>
-                <button onclick="returnList()" type="button"  class="btn btn-save">取消</button>
+                <button onclick="returnList()" type="button" class="btn btn-save">取消</button>
             </div>
             @*@Html.ValidationSummary()*@
             <div style="height: 200px;"></div>

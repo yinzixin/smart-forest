@@ -33,7 +33,7 @@
                             </div>
                             <div class="top-images">
                                 <img id="tree-photo" src="/images/icon-bl.png" class="img-left" />
-                                <img src="/images/ewm.png" class="img-right">
+                                <img  id="tree-barcode" src="/images/ewm.png" class="img-right">
                             </div>
                         </div>
                         <div class="float-details">
@@ -83,14 +83,16 @@
         function fillInfoPanel(tree)
         {
             $('#tree-photo').attr('src', tree.Photo);
+            $('#tree-barcode').attr('src','/tree/barcode/'+tree.ID)
             $('#info-name').html(tree.Name + '(' + tree.Number + ')');
             $('#info-age').html(tree.Age+"年");
-            $('#info-height').html(tree.Height);
-            $('#info-chestSize').html(tree.ChestSize);
-            $('#info-rootSize').html(tree.RootSize);
+            $('#info-height').html(tree.Height+"米");
+            $('#info-chestSize').html(tree.ChestSize+"厘米");
+            $('#info-rootSize').html(tree.RootSize+"厘米");
             $('#info-status').html(tree.Health);
             $('#info-lat').html(tree.Latitude);
             $('#info-lon').html(tree.Longtitude);
+            $('#info-area').html(tree.City)
             $('.map-float').show();
 
         }

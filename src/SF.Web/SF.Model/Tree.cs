@@ -82,6 +82,8 @@ namespace SF.Model
         public DateTime? InspectTime { get; set; }
         public string Checker { get; set; }
         public DateTime? CheckTime { get; set; }
+
+         [Required(ErrorMessage = "必填字段")]
         public string Creator { get; set; }
         public DateTime? CreateTime { get; set; }
 

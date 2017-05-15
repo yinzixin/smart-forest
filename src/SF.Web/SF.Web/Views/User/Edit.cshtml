@@ -16,12 +16,12 @@
         <div class="tab-contents">
             <p class="contents-title">用户信息</p>
             <div class="field-line">
-                <span class="line-left">用户名称<i class="">*</i></span>
-                <div class="line-right">@Html.TextBoxFor(m => m.UserName, new { @class = "input-long" })</div>
+                <span class="line-left">账号<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.UserName, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.UserName)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">密码<i class="">*</i></span>
-                <div class="line-right">@Html.PasswordFor(m => m.Password, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.Password, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.Password)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">用户级别</span>
@@ -45,20 +45,20 @@
                 </div>
             </div>
             <div class="field-line">
-                <span class="line-left">姓名</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.RealName, new { @class = "input-long" })</div>
+                <span class="line-left">负责人姓名</span>
+                <div class="line-right">@Html.TextBoxFor(m => m.RealName, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.RealName)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">负责区域</span>
-                <div class="line-right">@Html.TextBoxFor(m => m.DefaultArea, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.DefaultArea, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.DefaultArea)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">单位<i class="">*</i></span>
-                <div class="line-right">@Html.TextBoxFor(m => m.CompanyName, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.CompanyName, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.CompanyName)</div>
             </div>
             <div class="field-line">
                 <span class="line-left">系统标题<i class="">*</i></span>
-                <div class="line-right">@Html.TextBoxFor(m => m.Title, new { @class = "input-long" })</div>
+                <div class="line-right">@Html.TextBoxFor(m => m.Title, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.Title)</div>
             </div>
             <div class="field-btn">
                 <button class="btn btn-save">保存</button>
