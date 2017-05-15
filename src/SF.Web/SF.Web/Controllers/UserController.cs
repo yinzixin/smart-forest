@@ -12,10 +12,30 @@ namespace SF.Web.Controllers
     {
         // GET: User
          [UserProfileFilter]
-        public ActionResult Index()
+        public ActionResult Index(string IDName,int? jump,int Current=1)
         {
-            var list = UserService.Query();
-            return View(list);
+            ViewBag.IDName = IDName;
+            ViewBag.jump = jump;
+
+            var result = UserService.Query();
+
+            if (!string.IsNullOrEmpty(IDName))
+            {
+                result = result.Where(r => r.RealName.Contains(IDName) || r.UserName.Contains(IDName) || r.ID.ToString().Contains(IDName) || r.CompanyName.Contains(IDName)).ToList();
+            }
+            int pageSize = 10;
+            int count = result.Count() % pageSize == 0 ? result.Count() / pageSize : result.Count() / pageSize + 1;
+            int pageStart = Current - pageSize < 1 ? 1 : Current - pageSize;
+            int pageEnd = Current + 2 > count ? count : Current + 2;
+
+            List<int> pages = new List<int>();
+            for (int i = pageStart; i <= pageEnd; i++)
+            {
+                pages.Add(i);
+            }
+            ViewBag.page = pages;
+            result = result.Skip(Current * pageSize - pageSize).Take(pageSize).ToList();
+            return View(result);
         }
 
          [UserProfileFilter]
@@ -77,7 +97,9 @@ namespace SF.Web.Controllers
 
          public string Pause(int id)
          {
-             UserService.Pause(id);
+             var user= UserService.Query().Where(u=>u.ID==id).SingleOrDefault();
+             user.IsPause = !user.IsPause;
+             UserService.Update(user);
              return "ok";
          }
 
