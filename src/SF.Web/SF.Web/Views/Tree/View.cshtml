@@ -51,7 +51,7 @@
                 </div>
                 <div class="block-line">
                     <span class="line-left">是否名木</span>
-                    <span class="line-right">(@Model.IsFamous?"是":"否")</span>
+                    <span class="line-right">@(Model.IsFamous.HasValue && Model.IsFamous.Value?"是":"否")</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">是否在册</span>
@@ -59,43 +59,41 @@
                 </div>
                 <div class="block-line">
                     <span class="line-left">生长状况</span>
-                    <span class="line-right">很好</span>
+                    <span class="line-right">@Model.Health</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">树皮</span>
-                    <span class="line-right">很好</span>
+                    <span class="line-right">@Model.BodySkin</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">树洞</span>
-                    <span class="line-right">很好</span>
+                    <span class="line-right">@Model.BodyHole</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">枯枝</span>
-                    <span class="line-right">很好</span>
+                    <span class="line-right">@Model.BodyDeadwood</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">病虫危害程度</span>
-                    <span class="line-right">很好</span>
+                    <span class="line-right">@Model.BodyBug</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">冠径南北</span>
-                    <span class="line-right">123</span>
+                    <span class="line-right">@Model.CrownNorthSouth 米</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">冠径东西</span>
-                    <span class="line-right">1212</span>
+                    <span class="line-right">@Model.CrownEastWest 米</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">树冠完整度</span>
-                    <span class="line-right">1231321</span>
+                    <span class="line-right">@Model.CrownStatus</span>
                 </div>
             </div>
             <div class="con-instruction mb-15">
                 <h4 class="ins-title">应用价值</h4>
                 <p class="ins-content">
-                    农工商用：木材轻软,
-                    为制木匣和乐器的良材.种子炒熟可食或榨油,油为不干性油.树皮的纤维洁白,
-                    可用以造纸和编绳等.木材刨片可浸出……
+                   @Model.BodyUsage
                 </p>
             </div>
             <div class="con-instruction mb-15">
@@ -113,49 +111,49 @@
                 </div>
                 <div class="block-line">
                     <span class="line-left">经度</span>
-                    <span class="line-right">34</span>
+                    <span class="line-right">@Model.Longtitude</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">纬度</span>
-                    <span class="line-right">28</span>
+                    <span class="line-right">@Model.Latitude</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">地点类别</span>
-                    <span class="line-right">28</span>
+                    <span class="line-right">@Model.AddressType</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">城市化程度</span>
-                    <span class="line-right">中</span>
+                    <span class="line-right">@Model.CivilizedLevel</span>
                 </div>
             </div>
             <div class="con-block mb-15">
                 <div class="block-line">
                     <span class="line-left">负责人</span>
-                    <span class="line-right">小王</span>
+                    <span class="line-right">@Model.Dutier</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">调查人</span>
-                    <span class="line-right">小李</span>
+                    <span class="line-right">@Model.Inspector</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">调查时间</span>
-                    <span class="line-right">2017-5-10</span>
+                    <span class="line-right">@Model.InspectTime</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">复核人</span>
-                    <span class="line-right">小张</span>
+                    <span class="line-right">@Model.Checker</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">复核时间</span>
-                    <span class="line-right">2017-5-10</span>
+                    <span class="line-right">@Model.CheckTime</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">上传人</span>
-                    <span class="line-right">小红</span>
+                    <span class="line-right">@Model.Creator</span>
                 </div>
                 <div class="block-line">
-                    <span class="line-left">长传时间</span>
-                    <span class="line-right">2017-5-10</span>
+                    <span class="line-left">上传时间</span>
+                    <span class="line-right">@Model.CreateTime</span>
                 </div>
             </div>
         </div>
@@ -163,79 +161,79 @@
             <div class="con-block mb-15">
                 <div class="block-line">
                     <span class="line-left">土质</span>
-                    <span class="line-right">中</span>
+                    <span class="line-right">@Model.OtherSoil</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">排水</span>
-                    <span class="line-right">中</span>
+                    <span class="line-right">@Model.OtherDrain</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">植被</span>
-                    <span class="line-right">中</span>
+                    <span class="line-right">@Model.OtherVegetation</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">积水</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherSeeper</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">雷击</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherThunder</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">20M范围内水体情况</span>
-                    <span class="line-right">中</span>
+                    <span class="line-right">@Model.OtherWater</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">铺装</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherPavement</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">地面标高</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherHeightMarker</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">古树群</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherIsGroup</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">挡土墙</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherSoilProtector</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">支撑</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherStrut</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">驳岸</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherBulkhead</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">避雷设施</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherThunderProtector</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">保护半径</span>
-                    <span class="line-right">无</span>
+                    <span class="line-right">@Model.OtherProtectRadient</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">根部</span>
-                    <span class="line-right">根部状态饱满</span>
+                    <span class="line-right">@Model.OtherRoot</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">近5年古树及周边变化</span>
-                    <span class="line-right">无变化</span>
+                    <span class="line-right">@Model.OtherChanges</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">最近建筑</span>
-                    <span class="line-right">无建筑</span>
+                    <span class="line-right">@Model.OtherBuilding</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">影响树木生长活动</span>
-                    <span class="line-right">无影响</span>
+                    <span class="line-right">@Model.OtherActivity</span>
                 </div>
                 <div class="block-line">
                     <span class="line-left">护栏半径</span>
-                    <span class="line-right">半径广</span>
+                    <span class="line-right">@Model.OtherFenceRadient</span>
                 </div>
             </div>
         </div>

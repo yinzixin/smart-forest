@@ -204,6 +204,7 @@ namespace SF.Web.Controllers
         public ActionResult View(long id)
         {
             var tree = TreeService.Get(id);
+            tree = ConvertViewModel(tree);
             return View(tree);
         }
 
