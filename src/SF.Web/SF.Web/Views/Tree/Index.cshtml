@@ -181,7 +181,7 @@
         //dowload labels
         $('.page-download').click(function () {
             var ids = [];
-            $('table input:checked').each(function () {
+            $('input.checkboxes:checked').each(function () {
                 ids.push($(this).val());
             });
             if (ids.length > 0) {
@@ -192,6 +192,15 @@
                 alert('请至少选择一棵树');
             }
         });
+
+        $('.group-checkable').click(function(){
+            var checked=$(this).is(':checked');
+            
+            $('.checkboxes').each(function(){
+                //  $(this).attr('checked',checked);
+                $(this).click();
+            }); 
+        })
 
     });
 

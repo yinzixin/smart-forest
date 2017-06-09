@@ -10,6 +10,8 @@ using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Core;
 using ThoughtWorks.QRCode.Codec;
 using System.Drawing.Imaging;
+using System.Text;
+using System.Web.Script.Serialization;
 
 namespace SF.Web.Controllers
 {
@@ -65,7 +67,9 @@ namespace SF.Web.Controllers
         public ActionResult Edit(Tree model)
         {
             if (ModelState.IsValid)
-            { 
+            {
+                var user = GetUser();
+                model.UserID = user.ID;
                 TreeService.Update(model);
 
                 var path=Server.MapPath("/label");
@@ -214,21 +218,68 @@ namespace SF.Web.Controllers
             return View();
         }
 
-        public JsonResult MapData()
+          public String MapData(string query,decimal slon = 1000, decimal slat = 1000, decimal elon = 0, decimal elat = 0)
         {
             var user = GetUser();
 
             if(user!=null)
             {
-                var data=TreeService.Query(user.ID);
-                decimal x=0m,y=0m;
-                if (data.Any())
+                IEnumerable<Tree> data; decimal x = 0m, y = 0m;
+                if (!string.IsNullOrEmpty(query))
                 {
-                      x = data.Average(t => t.Longtitude);
-                      y = data.Average(t => t.Latitude);
+                     data = TreeService.Query(user.ID).Where(t => t.Number.Contains(query)).Take(100);
+
+
                 }
-                dynamic result = new { x = x, y = y, data = data.Select(d=>ConvertViewModel( d)) };
-                return Json(result, JsonRequestBehavior.AllowGet);
+                else
+                {
+                    data = TreeService.Query(user.ID).Where(d => d.Longtitude < slon && d.Longtitude > elon && d.Latitude < slat && d.Latitude > elat);
+                  
+                    if (data.Any())
+                    {
+                        x = data.Average(t => t.Longtitude);
+                        y = data.Average(t => t.Latitude);
+                    }
+                }
+                dynamic result;
+                if (data.Count() > 100)
+                {
+                    result = new { x = x, y = y, data = new string[0] };
+                }
+                else
+                {
+                    result = new
+                  {
+                      x = x,
+                      y = y,
+                      data = data.Select(d => ConvertViewModel(d)).Select(m => new
+                      {
+                          Longtitude = m.Longtitude,
+                          Latitude = m.Latitude,
+                          Age = m.Age,
+                          Height = m.Height,
+                          Name = m.Name,
+                          NameLatin = m.NameLatin,
+                          ChestSize = m.ChestSize,
+                          IsBooked = m.IsBooked,
+                          IsFamous = m.IsFamous,
+                          Health = m.Health,
+                          RootSize = m.RootSize,
+                          ID = m.ID,
+                          Number = m.Number,
+                          City = m.City,
+                          Photo = m.Photo
+                      })
+                  };
+                }
+
+                var js = new JavaScriptSerializer();
+                js.MaxJsonLength = int.MaxValue;
+                var sb = new StringBuilder();
+                js.Serialize(result, sb);
+                return sb.ToString();
+
+               // return Json(result, JsonRequestBehavior.AllowGet);
             }
             else
             {

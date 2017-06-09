@@ -14,8 +14,8 @@
             <div class="list-wrapper">
                 <div class="btn-group page-con-height">
                     <div class=" page-btn-search mar-le15">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        <input type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
+                        <span  id="search" class="glyphicon glyphicon-search form-control-feedback" onclick="search()"></span>
+                        <input id="searchText" type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
                     </div>
                 </div>
                 <div class="page-map">
@@ -29,7 +29,7 @@
                         <div class="float-brief">
                             <div class="top-title">
                                 <span id="info-name" class="top-name">银杏（YF0101）</span>
-                                <span class="icon-close"></span>
+                                <span onclick="closeInfoPanel();" class="icon-close"></span>
                             </div>
                             <div class="top-images">
                                 <img id="tree-photo" src="/images/icon-bl.png" class="img-left" />
@@ -69,15 +69,36 @@
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hMM0UdyU2PGWSFthzv680NIvQiHbqBeo"></script>
     <script>
-        
+        var map = new BMap.Map("container");
+
+        function reloaddata() {
+            var bounds = map.getBounds();
+            var slon = bounds.getNorthEast().lng;
+            var slat = bounds.getNorthEast().lat;
+            var elon = bounds.getSouthWest().lng;
+            var elat = bounds.getSouthWest().lat;
+            map.clearOverlays();
+            $.getJSON("/tree/mapdata?slon=" + slon + "&slat=" + slat + "&elon=" + elon + "&elat=" + elat, function (data) {
+                FillMap(map, data, true);
+            });
+
+        }
+
         function initMap() {
             $('.map-float').hide();
 
-            var map = new BMap.Map("container");
+          
+            map.enableScrollWheelZoom();
+            map.addEventListener("dragend", reloaddata);
+            map.addEventListener("zoomend", reloaddata);
+
             var point = new BMap.Point(116.404, 39.715);
             $.getJSON("/tree/mapdata", function (data) {
                 FillMap(map, data);
-            }); 
+            });
+
+
+
         }
 
         function fillInfoPanel(tree)
@@ -97,7 +118,12 @@
 
         }
 
-        function FillMap(map, data) {
+        function closeInfoPanel()
+        {
+            $('.map-float').hide();
+        }
+
+        function FillMap(map, data,zoom) {
 
             function addClickHandler(marker, content, opts,tree) {
                 marker.addEventListener("mouseover", function (e) {
@@ -128,8 +154,8 @@
                 var view = map.getViewport(eval(points));
                 var mapZoom = view.zoom;
                 var center = view.center;
-
-                map.centerAndZoom(center, mapZoom);
+                if (!zoom)
+                    map.centerAndZoom(center, mapZoom);
                 map.enableScrollWheelZoom(true);
                 for (var index in data.data) {
                     var tree = data.data[index];
@@ -147,11 +173,40 @@
                     map.addOverlay(marker);
                 }
             } else {
-                map.centerAndZoom("北京");
+                var point = new BMap.Point(data.x, data.y);
+
+                if (!zoom)                    
+                     map.centerAndZoom(point, 12);
+            }
+        }
+
+        function search() {
+            var text = $('#searchText').val();
+
+         
+            $.getJSON("/tree/mapdata?query=" + text, function (data) {
+                if (data.data.length > 0) {
+                    map.clearOverlays();
+                    map.removeEventListener("dragend", reloaddata);
+                    map.removeEventListener("zoomend", reloaddata);
+                    FillMap(map, data);
+                    map.addEventListener("dragend", reloaddata);
+                    map.addEventListener("zoomend", reloaddata);
+                } else {
+                    alert("没有找到树.");
+                }
+            });
+
+        }
+        document.onkeydown = function (e) {
+            e = e || window.event;
+            if (e.keyCode == 13) {
+                search();
             }
         }
 
         $(initMap);
+     
    
 
 </script>

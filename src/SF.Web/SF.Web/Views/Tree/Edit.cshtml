@@ -81,9 +81,27 @@
             </div>
             <p class="contents-title" id="info_1">地理位置</p>
             <div class="field-line">
-                <span class="line-left">地址（城市）<i class="">*</i></span>
+                <span class="line-left">地址<i class="">*</i></span>
+                <div class="line-right">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "input-long" })
+                </div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">城市<i class="">*</i></span>
                 <div class="line-right">
                     @Html.TextBoxFor(m => m.City, new { @class = "input-long" })
+                </div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">区县<i class="">*</i></span>
+                <div class="line-right">
+                    @Html.TextBoxFor(m => m.County, new { @class = "input-long" })
+                </div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">镇<i class="">*</i></span>
+                <div class="line-right">
+                    @Html.TextBoxFor(m => m.Town, new { @class = "input-long" })
                 </div>
             </div>
             <div class="field-line">
@@ -176,7 +194,7 @@
                 </div>
             </div>
             <div class="field-line">
-                <span class="line-left">相关故事</span>
+                <span class="line-left">备注</span>
                 <div class="line-right">
                     @*<textarea></textarea>*@
                     @Html.TextAreaFor(m => m.Story)
