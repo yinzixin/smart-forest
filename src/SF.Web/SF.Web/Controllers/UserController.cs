@@ -112,6 +112,19 @@ namespace SF.Web.Controllers
         public ActionResult Login(LoginModel model)
         {
             var user=UserService.Login(model.User,model.Password);
+
+            var log = new LoginLog
+            {
+                CreateTime = DateTime.Now,
+                IDUser = user == null ? -1 : user.ID,
+                LoginName = model.User,
+                IsPass = (user != null),
+                IP=GetIP()
+            };
+
+
+            UserService.Log(log);
+            
             if(user!=null)
             {
                 this.SetCurrentUser(user);
@@ -128,6 +141,45 @@ namespace SF.Web.Controllers
         {
             Session["current_user"] = null;
             return RedirectToAction("Login", "User");
+        }
+
+        public ActionResult Log()
+        {
+            var m = UserService.GetLog();
+            return View(m);
+        }
+
+
+        public   string GetIP()
+        {
+            //如果客户端使用了代理服务器，则利用HTTP_X_FORWARDED_FOR找到客户端IP地址
+            string userHostAddress = "";// this.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
+            //否则直接读取REMOTE_ADDR获取客户端IP地址
+            if (string.IsNullOrEmpty(userHostAddress))
+            {
+                userHostAddress = this.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            //前两者均失败，则利用Request.UserHostAddress属性获取IP地址，但此时无法确定该IP是客户端IP还是代理IP
+            if (string.IsNullOrEmpty(userHostAddress))
+            {
+                userHostAddress = this.Request.UserHostAddress;
+            }
+            //最后判断获取是否成功，并检查IP地址的格式（检查其格式非常重要）
+            if (!string.IsNullOrEmpty(userHostAddress) && IsIP(userHostAddress))
+            {
+                return userHostAddress;
+            }
+            return "127.0.0.1";
+        }
+
+        /// <summary>
+        /// 检查IP地址格式
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public static bool IsIP(string ip)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
         }
     }
 

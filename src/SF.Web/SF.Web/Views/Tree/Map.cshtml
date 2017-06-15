@@ -69,6 +69,12 @@
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hMM0UdyU2PGWSFthzv680NIvQiHbqBeo"></script>
     <script>
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return (r[2]); return null;
+        }
+
         var map = new BMap.Map("container");
 
         function reloaddata() {
@@ -93,7 +99,12 @@
             map.addEventListener("zoomend", reloaddata);
 
             var point = new BMap.Point(116.404, 39.715);
-            $.getJSON("/tree/mapdata", function (data) {
+            var url = "/tree/mapdata";
+            var number = GetQueryString("id");
+            if (number != null)
+                url = url + "?query=" + number;
+
+            $.getJSON(url, function (data) {
                 FillMap(map, data);
             });
 

@@ -69,6 +69,24 @@ namespace SF.Data
             }
         }
 
+        public static void Log(LoginLog log)
+        {
+            using (var conn = Database.GetConn())
+            {
+                conn.Insert(log);
+            }
+        }
+
+        public  static List<LoginLog> GetLog()
+        {
+            using (var conn = Database.GetConn())
+            {
+                var sql = "select * from LoginLog order by ID desc limit 200";
+                return conn.Query<LoginLog>(sql).ToList();
+            }
+
+        }
+
         public static void Del(int id)
         {
             var sql = "update `user` set IsDelete=1 where ID=@id";
