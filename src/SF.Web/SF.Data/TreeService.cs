@@ -80,5 +80,15 @@ namespace SF.Data
                 return res;
             }
         }
+
+        public static void Delete(long id)
+        {
+            var sql = "update tree set IsDelete=1 where id=" + id;
+            using (var conn = Database.GetConn())
+            {
+                conn.Execute(sql);
+            }
+
+        }
     }
 }

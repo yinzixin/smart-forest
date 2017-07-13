@@ -10,6 +10,8 @@
         <li class="nav-item"><a href="">用户列表</a></li>
     </ul>
 </div>
+@using(Html.BeginForm(FormMethod.Get))
+{ 
 <div class="box-tab tab-container">
     <div class="tab-contents ">
         <!--tab1-->
@@ -27,7 +29,7 @@
  
                     <div class=" page-btn-search mar-le15" style="float:right">
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        <input type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
+                        <input type="text" name="IDName" class=" input-search  " placeholder="请输入编号/名称搜索" />
                     </div>
                 </div>
                 <!--end-->
@@ -50,7 +52,7 @@
                         <td><input type="checkbox" class="checkboxes" value="1"> </td>
                         <td class="center"> @u.ID </td>
                         <td class="center">@u.UserName</td>
-                        <td class="center"><img src='@(u.IsPause?"/images/icon-enable.png":"/images/icon-disable.png")' class="icon-disable" />启用</td>   
+                        <td class="center"><img src='@(u.IsPause?"/images/icon-enable.png":"/images/icon-disable.png")' class="icon-disable" />@(u.IsPause?"禁用":"启用")</td>   
                         <td class="center"> @u.RealName </td>
                         
                         <td class="center"> @(u.Level==1?"区县级":"市级") </td>
@@ -59,8 +61,11 @@
                         <td class="center"> @u.Title </td>
                         <td class="sorting_1">
                             <a href="/user/edit/@u.ID" title="编辑"><img src="/images/icon-editor.png" /></a>
-                            <a title=""><img src="/images/icon-lock.png" class="icon-lock" /></a>
-                            <a title="删除"><img src="/images/icon-delete.png" class="icon-delete" /></a>
+                            @if(u.ID>0){
+                           
+                            <a onclick="pause(@u.ID)" title="禁用"><img src="/images/icon-lock.png" class="icon-lock" /></a>
+                            <a onclick="del(@u.ID);" title="删除" ><img src="/images/icon-delete.png" class="icon-delete" /></a>
+                            }
                         </td>
                     </tr>
                     }
@@ -74,25 +79,22 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                        @foreach (var p in ViewBag.page)
+                        {
+                            <li><a data-page="@p" href="javascript:void(0);">@p</a></li>
+                        }
+
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </ul>
-                    <select class="form-control input-sm input-xsmall input-inline">
-                        <option value="100">20</option>
-                        <option value="500">500</option>
-                        <option value="1000">1000</option>
-                        <option value="-1">所有</option>
-                    </select>
+
+
+ 
                     跳至
-                    <input type="text" />
+                    <input id="jump" name="jump" type="text" />
                     页
                 </nav>
                 <!--end-->
@@ -101,5 +103,42 @@
         <!--end-->
     </div>
 </div>
-
+<input id="qcurrent" type="hidden" value="1" name="Current" />
+}
 <script src="/js/page_list.js"></script>
+<script type="text/javascript">
+    function del(id) {
+        var y = confirm("确实要删除吗?")
+        if (y) {
+            $.get("/user/del/" + id, function (data) {
+                window.location.href = window.location.href;
+            });
+        }
+    }
+
+    function pause(id) {
+      
+        $.get("/user/pause/" + id, function (data) {
+            window.location.href = window.location.href;
+        });
+         
+    }
+
+
+    $(function () {
+        //pagination
+        $('ul.pagination a').click(function () {
+            $('#qcurrent').val($(this).attr('data-page'));
+            $('form').submit();
+        });
+
+    });
+
+    document.onkeydown = function (e) {
+        e = e || window.event;
+        if (e.keyCode == 13) {
+            this.forms[0].submit();
+            return false;
+        }
+    }
+</script>

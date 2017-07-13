@@ -47,9 +47,10 @@ namespace SF.Model
 
         [Required(ErrorMessage = "必填字段")]
         public decimal ChestSize { get; set; }
+         [Required(ErrorMessage = "必填字段")]
         public decimal RootSize { get; set; }
-        public decimal CrownNorthSouth { get; set; }
-        public decimal CrownEastWest { get; set; }
+        public decimal? CrownNorthSouth { get; set; }
+        public decimal? CrownEastWest { get; set; }
         public string CrownDeviated { get; set; }
         public string CrownStatus { get; set; }
         public string BodySkin { get; set; }
@@ -78,11 +79,13 @@ namespace SF.Model
         public string OtherBulkhead { get; set; }
         public string OtherThunderProtector { get; set; }
         public string Inspector { get; set; }
-        public string InspectTime { get; set; }
+        public DateTime? InspectTime { get; set; }
         public string Checker { get; set; }
-        public DateTime CheckTime { get; set; }
+        public DateTime? CheckTime { get; set; }
+
+         [Required(ErrorMessage = "必填字段")]
         public string Creator { get; set; }
-        public string CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
 
         public string LonText { get; set; }

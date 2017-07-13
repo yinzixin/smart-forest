@@ -14,8 +14,8 @@
             <div class="list-wrapper">
                 <div class="btn-group page-con-height">
                     <div class=" page-btn-search mar-le15">
-                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        <input type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
+                        <span  id="search" class="glyphicon glyphicon-search form-control-feedback" onclick="search()"></span>
+                        <input id="searchText" type="text" class=" input-search  " placeholder="请输入编号/名称搜索" />
                     </div>
                 </div>
                 <div class="page-map">
@@ -25,15 +25,15 @@
                     </div>
                     <!--end-->
                     <!--float-->
-                    <div class="map-float">
+                    <div class="map-float" style="display:none">
                         <div class="float-brief">
                             <div class="top-title">
                                 <span id="info-name" class="top-name">银杏（YF0101）</span>
-                                <span class="icon-close"></span>
+                                <span onclick="closeInfoPanel();" class="icon-close"></span>
                             </div>
                             <div class="top-images">
-                                <img src="/images/icon-bl.png" class="img-left" />
-                                <img src="/images/ewm.png" class="img-right">
+                                <img id="tree-photo" src="/images/icon-bl.png" class="img-left" />
+                                <img  id="tree-barcode" src="/images/ewm.png" class="img-right">
                             </div>
                         </div>
                         <div class="float-details">
@@ -69,32 +69,72 @@
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hMM0UdyU2PGWSFthzv680NIvQiHbqBeo"></script>
     <script>
-        
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return (r[2]); return null;
+        }
+
+        var map = new BMap.Map("container");
+
+        function reloaddata() {
+            var bounds = map.getBounds();
+            var slon = bounds.getNorthEast().lng;
+            var slat = bounds.getNorthEast().lat;
+            var elon = bounds.getSouthWest().lng;
+            var elat = bounds.getSouthWest().lat;
+            map.clearOverlays();
+            $.getJSON("/tree/mapdata?slon=" + slon + "&slat=" + slat + "&elon=" + elon + "&elat=" + elat, function (data) {
+                FillMap(map, data, true);
+            });
+
+        }
+
         function initMap() {
             $('.map-float').hide();
 
-            var map = new BMap.Map("container");
+          
+            map.enableScrollWheelZoom();
+            map.addEventListener("dragend", reloaddata);
+            map.addEventListener("zoomend", reloaddata);
+
             var point = new BMap.Point(116.404, 39.715);
-            $.getJSON("/tree/mapdata", function (data) {
+            var url = "/tree/mapdata";
+            var number = GetQueryString("id");
+            if (number != null)
+                url = url + "?query=" + number;
+
+            $.getJSON(url, function (data) {
                 FillMap(map, data);
-            }); 
+            });
+
+
+
         }
 
         function fillInfoPanel(tree)
         {
+            $('#tree-photo').attr('src', tree.Photo);
+            $('#tree-barcode').attr('src','/tree/barcode/'+tree.ID)
             $('#info-name').html(tree.Name + '(' + tree.Number + ')');
-            $('#info-age').html(tree.Age);
-            $('#info-height').html(tree.Height);
-            $('#info-chestSize').html(tree.ChestSize);
-            $('#info-rootSize').html(tree.RootSize);
+            $('#info-age').html(tree.Age+"年");
+            $('#info-height').html(tree.Height+"米");
+            $('#info-chestSize').html(tree.ChestSize+"厘米");
+            $('#info-rootSize').html(tree.RootSize+"厘米");
             $('#info-status').html(tree.Health);
             $('#info-lat').html(tree.Latitude);
             $('#info-lon').html(tree.Longtitude);
+            $('#info-area').html(tree.City)
             $('.map-float').show();
 
         }
 
-        function FillMap(map, data) {
+        function closeInfoPanel()
+        {
+            $('.map-float').hide();
+        }
+
+        function FillMap(map, data,zoom) {
 
             function addClickHandler(marker, content, opts,tree) {
                 marker.addEventListener("mouseover", function (e) {
@@ -125,8 +165,8 @@
                 var view = map.getViewport(eval(points));
                 var mapZoom = view.zoom;
                 var center = view.center;
-
-                map.centerAndZoom(center, mapZoom);
+                if (!zoom)
+                    map.centerAndZoom(center, mapZoom);
                 map.enableScrollWheelZoom(true);
                 for (var index in data.data) {
                     var tree = data.data[index];
@@ -144,11 +184,40 @@
                     map.addOverlay(marker);
                 }
             } else {
-                map.centerAndZoom("北京");
+                var point = new BMap.Point(data.x, data.y);
+
+                if (!zoom)                    
+                     map.centerAndZoom(point, 12);
+            }
+        }
+
+        function search() {
+            var text = $('#searchText').val();
+
+         
+            $.getJSON("/tree/mapdata?query=" + text, function (data) {
+                if (data.data.length > 0) {
+                    map.clearOverlays();
+                    map.removeEventListener("dragend", reloaddata);
+                    map.removeEventListener("zoomend", reloaddata);
+                    FillMap(map, data);
+                    map.addEventListener("dragend", reloaddata);
+                    map.addEventListener("zoomend", reloaddata);
+                } else {
+                    alert("没有找到树.");
+                }
+            });
+
+        }
+        document.onkeydown = function (e) {
+            e = e || window.event;
+            if (e.keyCode == 13) {
+                search();
             }
         }
 
         $(initMap);
+     
    
 
 </script>

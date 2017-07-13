@@ -108,8 +108,8 @@
                                 <td class="center"> @tree.Number </td>
                                 <td class="center">@tree.Name</td>
                                 <td class="center">@tree.NameLatin</td>
-                                <td class="center"> 是 </td>
-                                <td class="center"> 是 </td>
+                                <td class="center"> @(tree.IsFamous.HasValue&&tree.IsFamous.Value?"是":"否") </td>
+                                <td class="center"> @(tree.IsBooked.HasValue && tree.IsBooked.Value ? "是" : "否")  </td>
                                 <td class="center"> @tree.County </td>
 
                                 <td class="center"> @tree.Dutier </td>
@@ -117,20 +117,14 @@
                                 <td class="center"> @tree.InspectTime</td>
                                 <td class="sorting_1">
                                     <a href="/tree/edit/@tree.ID" title="编辑"><img src="/images/icon-editor.png" /></a>
-                                    <a title="地图"><img src="/images/icon-img.png" class="icon-img" /></a>
-                                    <a title="名片" class="card-hover">
+                                    <a title="地图" href="/tree/map?id=@tree.Number"><img src="/images/icon-img.png" class="icon-img" /></a>
+                                    <a title="名片" class="card-hover" href="/tree/treelabel/@tree.ID?@DateTime.Now.Ticks">
                                      <img src="/images/icon-card.png" class="icon-card" />
-                                        <div class="box-card">
-                                            <img src="/images/ewm.png" />
-                                            <div class="card-content">
-                                                <img src='@("/label/" + @tree.ID + ".png")' />
-                                                @*<p>编号：<span>01</span></p>
-                                                <p>名称：<span>大将军</span></p>
-                                                <p>拉丁名：<span>迎客松</span></p>*@
-                                            </div>
+                                        <div class="box-card">                                            
+                                                <img src='@("/label/" + @tree.ID + ".png?"+DateTime.Now.Ticks)' class="card-img"/>                                            
                                         </div>
                                     </a>
-                                    <a title="删除"><img src="/images/icon-delete.png" class="icon-delete" /></a>
+                                    <a onclick="del(@tree.ID);" title="删除"><img src="/images/icon-delete.png" class="icon-delete" /></a>
                                 </td>
                             </tr>
                         }
@@ -187,7 +181,7 @@
         //dowload labels
         $('.page-download').click(function () {
             var ids = [];
-            $('table input:checked').each(function () {
+            $('input.checkboxes:checked').each(function () {
                 ids.push($(this).val());
             });
             if (ids.length > 0) {
@@ -199,6 +193,35 @@
             }
         });
 
+        $('.group-checkable').click(function(){
+            var checked=$(this).is(':checked');
+            
+            $('.checkboxes').each(function(){
+                //  $(this).attr('checked',checked);
+                $(this).click();
+            }); 
+        })
+
     });
+
+
+    function del(id){
+        var y=confirm("确实要删除吗?")
+        if(y)
+        {
+            $.get("/tree/delete/"+id,function(data){
+                window.location.href=window.location.href;
+            });
+        }
+    }
+ 
+    document.onkeydown = function(e) {
+        e = e || window.event;
+        if(e.keyCode == 13) {
+            this.forms[0].submit();
+            return false;
+        }
+    }
+
 
 </script>

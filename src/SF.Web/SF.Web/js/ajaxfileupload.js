@@ -212,7 +212,7 @@ jQuery.extend({
             var rx = new RegExp("<pre.*?>(.*?)</pre>","i");
             var am = rx.exec(data);
             //this is the desired data extracted
-            var data = (am) ? am[1] : "";    //the only submatch or empty
+           // var data = (am) ? am[1] : "";    //the only submatch or empty
             eval( "data = " + data );
         }
         // evaluate scripts within html

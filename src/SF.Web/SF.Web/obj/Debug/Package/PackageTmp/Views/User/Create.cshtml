@@ -1,4 +1,4 @@
-﻿
+﻿@model SF.Model.User
 @{
     ViewBag.Title = "新建用户";
 }
@@ -10,37 +10,68 @@
         <a class="active">新建用户</a>
         <a>修改密码</a>
     </div>
-    <div class="tab-contents">
-        <p class="contents-title">用户信息</p>
-        <div class="field-line">
-            <span class="line-left">用户名称<i class="">*</i></span>
-            <div class="line-right"><input type="text" class="input-long" /></div>
+    @using (Html.BeginForm())
+    {
+        <div class="tab-contents">
+            <p class="contents-title">用户信息</p>
+            <div class="field-line">
+                <span class="line-left">账号<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.UserName, new { @class = "input-long" }) @Html.ValidationMessageFor(m=>m.UserName)</div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">密码<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.Password, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.Password)</div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">用户级别</span>
+                <div class="line-right">
+
+                    <label class="radio-style">
+                        @Html.RadioButtonFor(m => m.Level, 1, new { @class = "radios" })
+                        区县级
+                    </label>
+                    <label class="radio-style">
+                        @Html.RadioButtonFor(m => m.Level, 2, new { @class = "radios" })
+                        市级
+                    </label>
+                </div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">上级用户</span>
+
+                <div class="line-right">
+                    @Html.DropDownListFor(m => m.ParentUser, (System.Collections.Generic.IEnumerable<SelectListItem>)ViewBag.ParentUserList, new { @class = "input-long" })
+                </div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">负责人姓名</span>
+                <div class="line-right">@Html.TextBoxFor(m => m.RealName, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.RealName)</div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">负责区域</span>
+                <div class="line-right">@Html.TextBoxFor(m => m.DefaultArea, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.DefaultArea)</div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">单位<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.CompanyName, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.CompanyName)</div>
+            </div>
+            <div class="field-line">
+                <span class="line-left">系统标题<i class="">*</i></span>
+                <div class="line-right">@Html.TextBoxFor(m => m.Title, new { @class = "input-long" }) @Html.ValidationMessageFor(m => m.Title)</div>
+            </div>
+            <div class="field-btn">
+                <button class="btn btn-save">保存</button>
+                <button onclick="returnList()" type="button" class="btn btn-save">取消</button>
+            </div>
         </div>
-        <div class="field-line">
-            <span class="line-left">密码<i class="">*</i></span>
-            <div class="line-right"><input type="text" class="input-long" /></div>
-        </div>
-        <div class="field-line">
-            <span class="line-left">姓名</span>
-            <div class="line-right"><input type="text" class="input-long" /></div>
-        </div>
-        <div class="field-line">
-            <span class="line-left">联系方式</span>
-            <div class="line-right"><input type="text" class="input-long" /></div>
-        </div>
-        <div class="field-line">
-            <span class="line-left">单位<i class="">*</i></span>
-            <div class="line-right"><input type="text" class="input-long" /></div>
-        </div>
-        <div class="field-line">
-            <span class="line-left">标题<i class="">*</i></span>
-            <div class="line-right"><input type="text" class="input-long" /></div>
-        </div>
-        <div class="field-btn">
-            <button class="btn btn-save">保存</button>
-            <button class="btn btn-cancel">取消</button>
-        </div>
-    </div>
+    }
 </div>
 
 <script src="/js/new_user.js"></script>
+
+<script type="text/javascript">
+    function returnList() {
+        window.location.href = '/user';
+        return false;
+    }
+</script>

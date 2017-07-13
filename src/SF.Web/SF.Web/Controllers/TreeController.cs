@@ -8,6 +8,10 @@ using SF.Model;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Core;
+using ThoughtWorks.QRCode.Codec;
+using System.Drawing.Imaging;
+using System.Text;
+using System.Web.Script.Serialization;
 
 namespace SF.Web.Controllers
 {
@@ -23,6 +27,12 @@ namespace SF.Web.Controllers
                 var user = GetUser();
                 model.UserID = user.ID;
                 TreeService.Create(model);
+
+                var path = Server.MapPath("/label");
+                var bytes = TreeTagPainter.Paint(model, HttpContext.Request.Url.Host);
+                System.IO.File.WriteAllBytes(path + "/" + model.ID + ".png", bytes);
+
+
                 return RedirectToAction("Index");
             }
             else
@@ -57,11 +67,13 @@ namespace SF.Web.Controllers
         public ActionResult Edit(Tree model)
         {
             if (ModelState.IsValid)
-            { 
+            {
+                var user = GetUser();
+                model.UserID = user.ID;
                 TreeService.Update(model);
 
                 var path=Server.MapPath("/label");
-                var bytes=TreeTagPainter.Paint(model);
+                var bytes = TreeTagPainter.Paint(model, HttpContext.Request.Url.Host);
                 System.IO.File.WriteAllBytes(path + "/" + model.ID + ".png", bytes);
 
                 return RedirectToAction("Index");
@@ -84,7 +96,7 @@ namespace SF.Web.Controllers
                 var models = TreeService.Query(user.ID).ToList();
                 var result = DoQuery(q, models);
                 ViewBag.q = q;
-                int pageSize = 2;
+                int pageSize = 50;
                 int count = result.Count() % pageSize == 0 ? result.Count() / pageSize : result.Count() / pageSize + 1;
                 int pageStart = q.Current - pageSize < 1 ? 1 : q.Current - pageSize;
                 int pageEnd = q.Current + 2 > count ? count : q.Current + 2;
@@ -108,7 +120,7 @@ namespace SF.Web.Controllers
         public ActionResult Upload()
          {
              HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
-             if (files.Count == 0) return Json("Faild", JsonRequestBehavior.AllowGet);
+             if (files.Count == 0) return Content("failed"); // Json("Faild", JsonRequestBehavior.AllowGet);
         
           
              string FileEextension = Path.GetExtension(files[0].FileName);
@@ -123,8 +135,9 @@ namespace SF.Web.Controllers
                  files[0].SaveAs(fullFileName);
              }
              string fileName = files[0].FileName.Substring(files[0].FileName.LastIndexOf("\\") + 1, files[0].FileName.Length - files[0].FileName.LastIndexOf("\\") - 1);
-            
-             return Json(new { FileName = fileName, FilePath = virtualPath },  JsonRequestBehavior.AllowGet);
+             var str=Newtonsoft.Json.JsonConvert.SerializeObject(new { FileName = fileName, FilePath = virtualPath });
+            // return Json(new { FileName = fileName, FilePath = virtualPath },  JsonRequestBehavior.AllowGet);
+             return Content(str,"text/html");
          }
         IEnumerable<Tree> DoQuery(Models.TreeQueryModel q, IEnumerable<Tree> source)
         {
@@ -148,10 +161,20 @@ namespace SF.Web.Controllers
         public ActionResult TreeLabel(long id)
         {
             var tree = TreeService.Get(id);
-           var data= TreeTagPainter.Paint(tree);
+            var data = TreeTagPainter.Paint(tree, HttpContext.Request.Url.Host);
            return File(data, "image/jpeg");
         }
 
+        public ActionResult Barcode(long id)
+        {
+            var codec = new QRCodeEncoder();
+            codec.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
+            codec.QRCodeScale = 4;
+            var barcode = codec.Encode("http://" + HttpContext.Request.Url.Host + "/tree/view/" + id);
+             MemoryStream stream = new MemoryStream();
+             barcode.Save(stream, ImageFormat.Png);
+             return File(stream.ToArray(), "image/png");
+        }
         public ActionResult DownloadLabel(string ids)
         {
             var id=ids.Split(',').Select(c => long.Parse(c));
@@ -161,7 +184,7 @@ namespace SF.Web.Controllers
                 foreach (var i in id)
                 {
                     var tree = TreeService.Get(i);
-                    var data = TreeTagPainter.Paint(tree);
+                    var data = TreeTagPainter.Paint(tree, HttpContext.Request.Url.Host);
 
                     ZipEntry entry = new ZipEntry(tree.Name + "-" + tree.ID + ".png");
                     entry.DateTime = DateTime.Now;
@@ -175,27 +198,88 @@ namespace SF.Web.Controllers
             return File(memory.ToArray(),"application/x-zip-compressed","tree-label.zip");
         }
 
+        
+        public string Delete(long id)
+        {
+            TreeService.Delete(id);
+            return "OK";
+        }
+
+        public ActionResult View(long id)
+        {
+            var tree = TreeService.Get(id);
+            tree = ConvertViewModel(tree);
+            return View(tree);
+        }
+
           [UserProfileFilter]
         public ActionResult Map()
         {
             return View();
         }
 
-        public JsonResult MapData()
+          public String MapData(string query,decimal slon = 1000, decimal slat = 1000, decimal elon = 0, decimal elat = 0)
         {
             var user = GetUser();
 
             if(user!=null)
             {
-                var data=TreeService.Query(user.ID);
-                decimal x=0m,y=0m;
-                if (data.Any())
+                IEnumerable<Tree> data; decimal x = 0m, y = 0m;
+                if (!string.IsNullOrEmpty(query))
                 {
-                      x = data.Average(t => t.Longtitude);
-                      y = data.Average(t => t.Latitude);
+                     data = TreeService.Query(user.ID).Where(t => t.Number.Contains(query)).Take(100);
+
+
                 }
-                dynamic result = new { x = x, y = y, data = data.Select(d=>ConvertViewModel( d)) };
-                return Json(result, JsonRequestBehavior.AllowGet);
+                else
+                {
+                    data = TreeService.Query(user.ID).Where(d => d.Longtitude < slon && d.Longtitude > elon && d.Latitude < slat && d.Latitude > elat);
+                  
+                    if (data.Any())
+                    {
+                        x = data.Average(t => t.Longtitude);
+                        y = data.Average(t => t.Latitude);
+                    }
+                }
+                dynamic result;
+                if (data.Count() > 100)
+                {
+                    result = new { x = x, y = y, data = new string[0] };
+                }
+                else
+                {
+                    result = new
+                  {
+                      x = x,
+                      y = y,
+                      data = data.Select(d => ConvertViewModel(d)).Select(m => new
+                      {
+                          Longtitude = m.Longtitude,
+                          Latitude = m.Latitude,
+                          Age = m.Age,
+                          Height = m.Height,
+                          Name = m.Name,
+                          NameLatin = m.NameLatin,
+                          ChestSize = m.ChestSize,
+                          IsBooked = m.IsBooked,
+                          IsFamous = m.IsFamous,
+                          Health = m.Health,
+                          RootSize = m.RootSize,
+                          ID = m.ID,
+                          Number = m.Number,
+                          City = m.City,
+                          Photo = m.Photo
+                      })
+                  };
+                }
+
+                var js = new JavaScriptSerializer();
+                js.MaxJsonLength = int.MaxValue;
+                var sb = new StringBuilder();
+                js.Serialize(result, sb);
+                return sb.ToString();
+
+               // return Json(result, JsonRequestBehavior.AllowGet);
             }
             else
             {

@@ -1,0 +1,265 @@
+﻿@model SF.Model.Tree
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>详情页面</title>
+    <link href="/css/treeDetail.css" rel="stylesheet" />
+ 
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/js/treeDetail.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page-content">
+        <div class="box-tab tab1 active">
+            <div class="con-head mb-15">
+                <img src="@Model.Photo" />
+            </div>
+            <div class="con-block mb-15">
+                <div class="block-line">
+                    <span class="line-left">古树编号</span>
+                    <span class="line-right">@Model.Number</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">古树名称</span>
+                    <span class="line-right">@Model.Name</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">拉丁名</span>
+                    <span class="line-right">@Model.NameLatin</span>
+                </div>
+            </div>
+            <div class="con-block mb-15">
+                <div class="block-line">
+                    <span class="line-left">古树树龄</span>
+                    <span class="line-right">@Model.Age 年</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">古树高度</span>
+                    <span class="line-right">@Model.Height 米</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">胸围</span>
+                    <span class="line-right">@Model.ChestSize 厘米</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">是否名木</span>
+                    <span class="line-right">@(Model.IsFamous.HasValue && Model.IsFamous.Value?"是":"否")</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">是否在册</span>
+                    <span class="line-right">是</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">生长状况</span>
+                    <span class="line-right">@Model.Health</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">树皮</span>
+                    <span class="line-right">@Model.BodySkin</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">树洞</span>
+                    <span class="line-right">@Model.BodyHole</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">枯枝</span>
+                    <span class="line-right">@Model.BodyDeadwood</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">病虫危害程度</span>
+                    <span class="line-right">@Model.BodyBug</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">冠径南北</span>
+                    <span class="line-right">@Model.CrownNorthSouth 米</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">冠径东西</span>
+                    <span class="line-right">@Model.CrownEastWest 米</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">树冠完整度</span>
+                    <span class="line-right">@Model.CrownStatus</span>
+                </div>
+            </div>
+            <div class="con-instruction mb-15">
+                <h4 class="ins-title">应用价值</h4>
+                <p class="ins-content">
+                   @Model.BodyUsage
+                </p>
+            </div>
+            <div class="con-instruction mb-15">
+                <h4 class="ins-title">植物志资料</h4>
+                <p class="ins-content">
+                    @Model.Information
+                </p>
+            </div>
+        </div>
+        <div class="box-tab tab2">
+            <div class="con-block mb-15">
+                <div class="block-line">
+                    <span class="line-left">地理位置</span>
+                    <span class="line-right">@Model.Address</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">经度</span>
+                    <span class="line-right">@Model.Longtitude</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">纬度</span>
+                    <span class="line-right">@Model.Latitude</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">地点类别</span>
+                    <span class="line-right">@Model.AddressType</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">城市化程度</span>
+                    <span class="line-right">@Model.CivilizedLevel</span>
+                </div>
+            </div>
+            <div class="con-block mb-15">
+                <div class="block-line">
+                    <span class="line-left">负责人</span>
+                    <span class="line-right">@Model.Dutier</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">调查人</span>
+                    <span class="line-right">@Model.Inspector</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">调查时间</span>
+                    <span class="line-right">@Model.InspectTime</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">复核人</span>
+                    <span class="line-right">@Model.Checker</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">复核时间</span>
+                    <span class="line-right">@Model.CheckTime</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">上传人</span>
+                    <span class="line-right">@Model.Creator</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">上传时间</span>
+                    <span class="line-right">@Model.CreateTime</span>
+                </div>
+            </div>
+        </div>
+        <div class=" box-tab tab3">
+            <div class="con-block mb-15">
+                <div class="block-line">
+                    <span class="line-left">土质</span>
+                    <span class="line-right">@Model.OtherSoil</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">排水</span>
+                    <span class="line-right">@Model.OtherDrain</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">植被</span>
+                    <span class="line-right">@Model.OtherVegetation</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">积水</span>
+                    <span class="line-right">@Model.OtherSeeper</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">雷击</span>
+                    <span class="line-right">@Model.OtherThunder</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">20M范围内水体情况</span>
+                    <span class="line-right">@Model.OtherWater</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">铺装</span>
+                    <span class="line-right">@Model.OtherPavement</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">地面标高</span>
+                    <span class="line-right">@Model.OtherHeightMarker</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">古树群</span>
+                    <span class="line-right">@Model.OtherIsGroup</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">挡土墙</span>
+                    <span class="line-right">@Model.OtherSoilProtector</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">支撑</span>
+                    <span class="line-right">@Model.OtherStrut</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">驳岸</span>
+                    <span class="line-right">@Model.OtherBulkhead</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">避雷设施</span>
+                    <span class="line-right">@Model.OtherThunderProtector</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">保护半径</span>
+                    <span class="line-right">@Model.OtherProtectRadient</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">根部</span>
+                    <span class="line-right">@Model.OtherRoot</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">近5年古树及周边变化</span>
+                    <span class="line-right">@Model.OtherChanges</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">最近建筑</span>
+                    <span class="line-right">@Model.OtherBuilding</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">影响树木生长活动</span>
+                    <span class="line-right">@Model.OtherActivity</span>
+                </div>
+                <div class="block-line">
+                    <span class="line-left">护栏半径</span>
+                    <span class="line-right">@Model.OtherFenceRadient</span>
+                </div>
+            </div>
+        </div>
+        <div class=" box-tab tab4">
+            <div class="con-instruction mb-15">
+                <h4 class="ins-title">备注</h4>
+                <p class="ins-content">
+                    @Model.Story
+                </p>
+            </div>
+        </div>
+        <div style="height: 65px;"></div>
+        <ul class="box-footer">
+            <li class="item active" data-tab=".tab1">
+                <span class="icon icon-tree">古树</span>
+            </li>
+            <li class="item" data-tab=".tab2">
+                <span class="icon icon-loc">位置</span>
+            </li>
+            <li class="item" data-tab=".tab3">
+                <span class=" icon icon-else">其他</span>
+            </li>
+            <li class="item" data-tab=".tab4">
+                <span class="icon icon-book">备注</span>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

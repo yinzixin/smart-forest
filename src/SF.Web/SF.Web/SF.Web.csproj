@@ -195,6 +195,7 @@
     <Content Include="css\page_editor.css" />
     <Content Include="css\page_list.css" />
     <Content Include="css\page_login.css" />
+    <Content Include="css\treeDetail.css" />
     <Content Include="css\user_manage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -219,11 +220,20 @@
     <Content Include="images\icon-tit.png" />
     <Content Include="images\icon-up.png" />
     <Content Include="images\icon-xl.png" />
+    <Content Include="images\icon_book.png" />
+    <Content Include="images\icon_book_active.png" />
+    <Content Include="images\icon_else.png" />
+    <Content Include="images\icon_else_active.png" />
+    <Content Include="images\icon_loc.png" />
+    <Content Include="images\icon_loc_active.png" />
+    <Content Include="images\icon_tree.png" />
+    <Content Include="images\icon_tree_active.png" />
     <Content Include="images\sign-out.png" />
     <Content Include="js\ajaxfileupload.js" />
     <Content Include="js\editor.js" />
     <Content Include="js\new_user.js" />
     <Content Include="js\page_list.js" />
+    <Content Include="js\treeDetail.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\lcoal.pubxml" />
@@ -1460,6 +1470,8 @@
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Tree\View.cshtml" />
+    <Content Include="Views\User\Log.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
