@@ -1,0 +1,39 @@
+
+.page-content {
+  .box-list {
+
+    .list-link {
+      //list-style: disc outside;
+      .link-item {
+        .item-left {
+          padding-left: 1rem;
+          &:before{
+            content: "";
+            position: absolute;
+            width: .2rem;
+            height: .2rem;
+            top: .88rem;
+            left: .5rem;
+            background: #ababab;
+            -webkit-border-radius: 100%;
+            -ms-border-radius: 100%;
+            -moz-border-radius: 100%;
+            -o-border-radius: 100%;
+            border-radius: 100%;
+          }
+
+          @size-top:1.5em;
+          .news-top{
+            background: url(http://mo.faisys.com/image/mobi/newTopFlag1.gif?v=201610211723) no-repeat 0 0;
+            background-size: @size-top @size-top;
+            width: @size-top;
+            height: @size-top ;
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+
+      }
+    }
+  }
+}

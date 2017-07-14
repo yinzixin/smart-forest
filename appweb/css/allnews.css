@@ -1,0 +1,25 @@
+.page-content .box-list .list-link .link-item .item-left {
+  padding-left: 1rem;
+}
+.page-content .box-list .list-link .link-item .item-left:before {
+  content: "";
+  position: absolute;
+  width: .2rem;
+  height: .2rem;
+  top: .88rem;
+  left: .5rem;
+  background: #ababab;
+  -webkit-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+}
+.page-content .box-list .list-link .link-item .item-left .news-top {
+  background: url(http://mo.faisys.com/image/mobi/newTopFlag1.gif?v=201610211723) no-repeat 0 0;
+  background-size: 1.5em 1.5em;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  vertical-align: middle;
+}

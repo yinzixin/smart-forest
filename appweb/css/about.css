@@ -1,0 +1,54 @@
+.page-content .box-list .newsline-list {
+  list-style: none;
+  padding: .26rem 0;
+}
+.page-content .box-list .newsline-list .newsLine-item {
+  position: relative;
+  clear: both;
+  margin: .26rem .7rem;
+  padding: 0;
+  overflow: hidden;
+}
+.page-content .box-list .newsline-list .newsLine-item .im {
+  width: 14.6rem;
+  height: 9rem;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page-content .box-list .newsline-list .newsLine-item .cover {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.65);
+  max-height: 9rem;
+  font-weight: normal;
+  color: white;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.page-content .box-list .newsline-list .newsLine-item .cover p {
+  position: relative;
+  padding: 2.2rem 2rem .7rem;
+  width: auto;
+  display: block;
+  font-weight: normal;
+  font-size: .78rem;
+  letter-spacing: .04rem;
+  /* max-height: 2rem;*/
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+}
+.page-content .box-list .newsline-list .newsLine-item .cover .news-top {
+  width: .95rem;
+  height: .95rem;
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  margin-right: .1rem;
+  margin-top: .04rem;
+  background: url(http://mo.faisys.com/image/mobi/newTopFlag1.gif?v=201610211723) no-repeat 0 0;
+  background-size: 1rem 1rem;
+}

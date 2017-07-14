@@ -1,0 +1,45 @@
+
+.page-content {
+  .product-list {
+
+    .list-link {
+      .link-item {
+        height: auto;
+        line-height: normal;
+        padding: .25rem 0;
+        a{
+          display: inline-block;
+          width: 100%;
+        }
+        .item-left {
+          width: 30%;
+          position: relative;
+          img {
+            max-width: 100%;
+          }
+        }
+        .item-right {
+          left: 38%;
+          right: .05rem;
+          top: .25rem;
+          font-size: .6rem;
+          bottom: .25rem;
+          color: #000;
+          &:before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            vertical-align: middle;
+          }
+
+          span {
+            vertical-align: middle;
+          }
+
+        }
+
+      }
+    }
+  }
+}
